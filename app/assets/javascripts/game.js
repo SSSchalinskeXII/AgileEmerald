@@ -39,7 +39,7 @@ function update() {
     // Movement
     if (cursors.up.isDown) {
         
-        game.physics.arcade.accelerationFromRotation(player.rotation, 200, player.body.acceleration);
+        game.physics.arcade.accelerationFromRotation(player.rotation - 1.5708, 200, player.body.acceleration);
     
     } else {
         
