@@ -7,6 +7,9 @@ function preload() {
     
 }
 
+var sprite;
+var cursors;
+
 function create() {
     
 }
