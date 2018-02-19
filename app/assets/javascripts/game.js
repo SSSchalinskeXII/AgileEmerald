@@ -27,6 +27,9 @@ function create() {
     // Scale player sprite
     player.scale.setTo(.25);
     
+    // Set rotation around center of player sprite
+    player.anchor.setTo(0.5, 0.5);
+    
 }
 
 function update() {
