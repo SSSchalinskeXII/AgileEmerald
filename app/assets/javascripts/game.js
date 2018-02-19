@@ -25,5 +25,32 @@ function create() {
 
 function update() {
     
+    cursors = game.input.keyboard.createCursorKeys();
+    
+    // Movement
+    if (cursors.up.isDown) {
+        
+        game.physics.arcade.accelerationFromRotation(player.rotation, 200, player.body.acceleration);
+    
+    } else {
+        
+        player.body.acceleration.set(0);
+    
+    }
+
+    // Rotation
+    if (cursors.left.isDown) {
+    
+        player.body.angularVelocity = -300;
+    
+    } else if (cursors.right.isDown) {
+    
+        player.body.angularVelocity = 300;
+    
+    } else {
+        
+        player.body.angularVelocity = 0;
+    
+    }
 }
 
