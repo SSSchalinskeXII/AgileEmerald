@@ -2,8 +2,8 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv', { preload: preload,
 
 function preload() {
     
-    game.load.image('background', '../images/StarBackground.png') //Background
-    game.load.image('player', '../images/SpaceShip.png') //Player Character
+    game.load.image('background', '../assets/StarBackground.png') //Background
+    game.load.image('player', '../assets/SpaceShip.png') //Player Character
     
 }
 
