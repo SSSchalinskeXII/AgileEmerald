@@ -11,6 +11,15 @@ var sprite;
 var cursors;
 
 function create() {
+
+    // Add background
+    game.add.sprite(0, 0, 'background');
+    
+    // Add player sprite
+    player = game.add.sprite(375, game.world.height - 150, 'player');
+    
+    // Add physics to player
+    game.physics.arcade.enable(player);
     
 }
 
