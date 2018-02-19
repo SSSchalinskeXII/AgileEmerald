@@ -21,6 +21,9 @@ function create() {
     // Add physics to player
     game.physics.arcade.enable(player);
     
+    // Prevent player from leaving game window
+    player.body.collideWorldBounds = true;
+    
 }
 
 function update() {
