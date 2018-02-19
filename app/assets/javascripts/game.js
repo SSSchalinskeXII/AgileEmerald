@@ -24,6 +24,9 @@ function create() {
     // Prevent player from leaving game window
     player.body.collideWorldBounds = true;
     
+    // Scale player sprite
+    player.scale.setTo(.25);
+    
 }
 
 function update() {
