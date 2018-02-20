@@ -15,10 +15,16 @@
  */
 h1 {
     text-align: center;
+    color: red;
+    font-size: 36px;
 }
 
 #gameDiv {
     width: 800px;
     margin: auto;
+}
+
+body {
+    background-image: url("BlueprintBackground.jpg");
 }
 
