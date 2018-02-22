@@ -63,6 +63,23 @@ function create() {
     resetAsteroids();
 }
 
+function createAsteroid (x, y, asset) {
+    asteroid = this.asteroidGroup.create(x, y, asset);
+    asteroid.anchor.setTo(0.5, 0.5);
+
+    game.physics.arcade.velocityFromRotation(1.53, 10, asteroid.body.velocity);
+    game.physics.arcade.moveToObject(asteroid, player, 10);
+
+}
+
+function resetAsteroids () {
+    for (i=0; i < asteroidCount; i++) {
+        x = Math.random() * 800;
+        y = Math.round(Math.random()) * 600;
+        createAsteroid(x, y, 'asteroid');
+    }
+}
+
 function update() {
     
     cursors = game.input.keyboard.createCursorKeys();
