@@ -10,6 +10,8 @@ var sprite;
 var cursors;
 var weapon;
 var fireButton;
+var asteroidCount = 3;
+var totalAsteroids = asteroidCount;
 
 function create() {
 
