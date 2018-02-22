@@ -36,6 +36,9 @@ function create() {
     // Set drag
     player.body.drag.set(100);
 
+    // Set max speed
+    player.body.maxVelocity.set(300);
+
     //  Creates 30 bullets, using the 'bullet' graphic
     weapon = game.add.weapon(30, 'bullet');
 
@@ -113,7 +116,7 @@ function update() {
 
     }
 
-    // Weapons fire
+    // Weapons firegit 
     if (fireButton.isDown) {
 
         weapon.fire();
