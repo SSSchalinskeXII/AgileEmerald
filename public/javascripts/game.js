@@ -52,7 +52,7 @@ function create() {
     weapon.fireRate = 200;
 
     // Set weapon to player
-    weapon.trackSprite(player, 50, 0, true);
+    weapon.trackSprite(player, 25, 0, true);
 
     // Set bullet scale
     weapon.bullets.setAll('scale.x', 0.05);
