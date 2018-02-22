@@ -10,6 +10,8 @@ function preload() {
 
 var sprite;
 var cursors;
+var weapon;
+var fireButton;
 
 function create() {
 
