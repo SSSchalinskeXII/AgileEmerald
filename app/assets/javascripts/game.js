@@ -81,5 +81,11 @@ function update() {
         player.body.angularVelocity = 0;
     
     }
+
+    if (fireButton.isDown) {
+
+        weapon.fire();
+
+    }
 }
 
