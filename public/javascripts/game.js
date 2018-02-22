@@ -54,7 +54,13 @@ function create() {
 
     // Define fire button
     fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-console.log("create end");
+
+    // Add Asteroid sprite
+    asteroidGroup = game.add.group();
+    asteroidGroup.enableBody = true;
+    asteroidGroup.physicsBodyType = Phaser.Physics.ARCADE;
+
+    resetAsteroids();
 }
 
 function update() {
