@@ -30,7 +30,24 @@ function create() {
     
     // Set rotation around center of player sprite
     player.anchor.setTo(0.5, 0.5);
-    
+
+    //  Creates 30 bullets, using the 'bullet' graphic
+    weapon = game.add.weapon(30, 'bullet');
+
+    //  The bullet will be automatically killed when it leaves the world bounds
+    weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+
+    //  The speed at which the bullet is fired
+    weapon.bulletSpeed = 800;
+
+    // The rate at which bullets are fired
+    weapon.fireRate = 200;
+
+    // Set weapon to player
+    weapon.trackSprite(player, 0, 0, true);
+
+    // Define fire button
+    fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 }
 
 function update() {
