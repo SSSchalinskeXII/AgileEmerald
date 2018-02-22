@@ -4,6 +4,7 @@ function preload() {
     
     game.load.image('background', '../assets/StarBackground.png') //Background
     game.load.image('player', '../assets/SpaceShip.png') //Player Character
+    game.load.image('bullet', '../assets/bullet.png') //Bullets
     
 }
 
