@@ -1,9 +1,10 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv', { preload: preload, create: create, update: update });
+
 function preload() {
     game.load.image('background', '../images/StarBackground.png') //Background
     game.load.image('player', '../images/SpaceShip.png') //Player Character
     game.load.image('bullet', '../images/Bullet.png') //Bullets
-    console.log("preload end");
+    game.load.image('asteroid', '../images/SpaceRock.png') //Asteroids
 };
 var sprite;
 var cursors;
