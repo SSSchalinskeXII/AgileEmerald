@@ -46,7 +46,11 @@ function create() {
     weapon.fireRate = 200;
 
     // Set weapon to player
-    weapon.trackSprite(player, 0, 0, true);
+    weapon.trackSprite(player, 50, 0, true);
+
+    // Set bullet scale
+    weapon.bullets.setAll('scale.x', 0.1);
+    weapon.bullets.setAll('scale.y', 0.1);
 
     // Define fire button
     fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -59,7 +63,7 @@ function update() {
     // Movement
     if (cursors.up.isDown) {
         
-        game.physics.arcade.accelerationFromRotation(player.rotation - 1.5708, 200, player.body.acceleration);
+        game.physics.arcade.accelerationFromRotation(player.rotation, 200, player.body.acceleration);
     
     } else {
         
