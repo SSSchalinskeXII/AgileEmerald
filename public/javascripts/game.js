@@ -28,10 +28,13 @@ function create() {
     player.body.collideWorldBounds = true;
     
     // Scale player sprite
-    player.scale.setTo(.25);
+    player.scale.setTo(.15);
     
     // Set rotation around center of player sprite
     player.anchor.setTo(0.5, 0.5);
+
+    // Set drag
+    player.body.drag.set(100);
 
     //  Creates 30 bullets, using the 'bullet' graphic
     weapon = game.add.weapon(30, 'bullet');
@@ -49,8 +52,8 @@ function create() {
     weapon.trackSprite(player, 50, 0, true);
 
     // Set bullet scale
-    weapon.bullets.setAll('scale.x', 0.1);
-    weapon.bullets.setAll('scale.y', 0.1);
+    weapon.bullets.setAll('scale.x', 0.05);
+    weapon.bullets.setAll('scale.y', 0.05);
 
     // Define fire button
     fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
