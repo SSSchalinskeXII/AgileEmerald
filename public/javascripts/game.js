@@ -1,14 +1,14 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv', { preload: preload, create: create, update: update });
-
 function preload() {
-    
     game.load.image('background', '../images/StarBackground.png') //Background
     game.load.image('player', '../images/SpaceShip.png') //Player Character
-    
-}
-
+    game.load.image('bullet', '../images/Bullet.png') //Bullets
+    console.log("preload end");
+};
 var sprite;
 var cursors;
+var weapon;
+var fireButton;
 
 function create() {
 
@@ -29,7 +29,29 @@ function create() {
     
     // Set rotation around center of player sprite
     player.anchor.setTo(0.5, 0.5);
-    
+
+    //  Creates 30 bullets, using the 'bullet' graphic
+    weapon = game.add.weapon(30, 'bullet');
+
+    //  The bullet will be automatically killed when it leaves the world bounds
+    weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+
+    //  The speed at which the bullet is fired
+    weapon.bulletSpeed = 800;
+
+    // The rate at which bullets are fired
+    weapon.fireRate = 200;
+
+    // Set weapon to player
+    weapon.trackSprite(player, 50, 0, true);
+
+    // Set bullet scale
+    weapon.bullets.setAll('scale.x', 0.1);
+    weapon.bullets.setAll('scale.y', 0.1);
+
+    // Define fire button
+    fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+console.log("create end");
 }
 
 function update() {
@@ -39,7 +61,7 @@ function update() {
     // Movement
     if (cursors.up.isDown) {
         
-        game.physics.arcade.accelerationFromRotation(player.rotation - 1.5708, 200, player.body.acceleration);
+        game.physics.arcade.accelerationFromRotation(player.rotation, 200, player.body.acceleration);
     
     } else {
         
@@ -59,7 +81,11 @@ function update() {
     } else {
         
         player.body.angularVelocity = 0;
-    
+
+    }
+
+    if (fireButton.isDown) {
+
+        weapon.fire();
     }
 }
-
