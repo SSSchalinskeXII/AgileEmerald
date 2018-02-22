@@ -113,8 +113,14 @@ function update() {
 
     }
 
+    // Weapons fire
     if (fireButton.isDown) {
 
         weapon.fire();
+    }
+
+    // Asteroid track towards player movement
+    for (i=0; i < totalAsteroids; i++) {
+        game.physics.arcade.moveToObject(asteroidGroup.children[i], player, 60);
     }
 }
