@@ -10,6 +10,7 @@ var sprite;
 var cursors;
 var weapon;
 var fireButton;
+var playerAlive = true;
 var asteroidCount = 3;
 var totalAsteroids = asteroidCount;
 
@@ -124,8 +125,12 @@ function update() {
 
     // Asteroid track towards player movement & collision
     for (i=0; i < totalAsteroids; i++) {
-        game.physics.arcade.moveToObject(asteroidGroup.children[i], player, 60);
-        game.physics.arcade.collide(player, asteroidGroup.children[i]);
+        if (playerAlive == true) {
+            game.physics.arcade.moveToObject(asteroidGroup.children[i], player, 60);
+        } else {
+            asteroidGroup.children[i].velocity = asteroidGroup.children[i].velocity;
+        }
+        game.physics.arcade.collide(player, asteroidGroup.children[i], shipHit, null, this);
         game.physics.arcade.overlap(asteroidGroup.children[i], weapon.bullets, hitAsteroid, null, this);
     }
 
@@ -134,4 +139,9 @@ function update() {
 function hitAsteroid (rock, bullet) {
     rock.kill();
     bullet.kill();
+}
+
+function shipHit (ship) {
+    ship.kill();
+    playerAlive = false;
 }
