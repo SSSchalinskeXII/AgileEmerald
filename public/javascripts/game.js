@@ -122,8 +122,11 @@ function update() {
         weapon.fire();
     }
 
-    // Asteroid track towards player movement
+    // Asteroid track towards player movement & collision
     for (i=0; i < totalAsteroids; i++) {
         game.physics.arcade.moveToObject(asteroidGroup.children[i], player, 60);
+        game.physics.arcade.collide(player, asteroidGroup.children[i]);
+
     }
+
 }
