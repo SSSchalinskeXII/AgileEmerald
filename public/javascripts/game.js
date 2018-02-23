@@ -126,7 +126,12 @@ function update() {
     for (i=0; i < totalAsteroids; i++) {
         game.physics.arcade.moveToObject(asteroidGroup.children[i], player, 60);
         game.physics.arcade.collide(player, asteroidGroup.children[i]);
-
+        game.physics.arcade.overlap(asteroidGroup.children[i], weapon.bullets, hitAsteroid, null, this);
     }
 
+}
+
+function hitAsteroid (rock, bullet) {
+    rock.kill();
+    bullet.kill();
 }
