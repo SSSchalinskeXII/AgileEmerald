@@ -12,6 +12,7 @@ var weapon;
 var fireButton;
 var safeTime;
 var respawnTime = 2000; // 2 seconds rocks wont fly at player
+var startAmmo = 10; // Starting ammo
 var playerAlive = true;
 var asteroidCount = 3;
 var totalAsteroids = asteroidCount;
@@ -53,6 +54,9 @@ function create() {
 
     // The rate at which bullets are fired
     weapon.fireRate = 200;
+
+    // The ammo count
+    weapon.fireLimit = startAmmo;
 
     // Set weapon to player
     weapon.trackSprite(player, 25, 0, true);
@@ -156,4 +160,6 @@ function shipHit (ship) {
 function respawnPlayer () {
     player.reset(game.world.width * .5, game.world.height - 150);
     safeTime = game.time.now + respawnTime;
+    weapon.firelimit = startAmmo;
+    weapon.resetShots();
 }
