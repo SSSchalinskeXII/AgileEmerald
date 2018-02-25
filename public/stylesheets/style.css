@@ -66,11 +66,11 @@ h4 {
     height: 150px;
     left: 80%;
     bottom: 85px;
-    content: url(controls.png);
+    content: url("../images/Controls.png");
 }
 
 body {
-    background-image: url("BlueprintBackground.jpg");
+    background-image: url("../images/BlueprintBackground.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin: auto;
