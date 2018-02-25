@@ -10,6 +10,8 @@ var sprite;
 var cursors;
 var weapon;
 var fireButton;
+var safeTime;
+var respawnTime = 2000; // 2 seconds rocks wont fly at player
 var playerAlive = true;
 var asteroidCount = 3;
 var totalAsteroids = asteroidCount;
@@ -134,6 +136,10 @@ function update() {
         game.physics.arcade.overlap(asteroidGroup.children[i], weapon.bullets, hitAsteroid, null, this);
     }
 
+    if (safeTime < game.time.now) {
+        playerAlive = true;
+    }
+
 }
 
 function hitAsteroid (rock, bullet) {
@@ -142,6 +148,11 @@ function hitAsteroid (rock, bullet) {
 }
 
 function shipHit (ship) {
-    ship.kill();
     playerAlive = false;
+    respawnPlayer();
+}
+
+function respawnPlayer () {
+    player.reset(200, 200);
+    safeTime = game.time.now + respawnTime;
 }
