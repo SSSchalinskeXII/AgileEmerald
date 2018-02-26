@@ -8,7 +8,7 @@ Bugs :: https://github.com/SSSchalinskeXII/AgileEmerald/issues
 Pull Requests :: https://github.com/SSSchalinskeXII/AgileEmerald/pulls
 ====Pull requests welcome!
 
-This is a game which is very much like Asteroids. Characters have limited lives and ammo, the ship pulls asteroids towards it, high point scores give lives, satellites powerups give ammo and are dropped after random intervals or after destroying large asteroids.
+This is a game which is very much like Asteroids. Characters have limited lives and ammo, the ship pulls asteroids towards it, high point scores give lives, satellite powerups give ammo and are dropped after random intervals or after destroying large asteroids.
 
 The game engine is written in Phaser/JS. 
 The server-side framework is Ruby on Rails. 
