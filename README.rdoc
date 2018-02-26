@@ -15,7 +15,7 @@ The server-side framework is Ruby on Rails.
 Authentication and metrics are powered by Google OAuth.
 The database is SQLite.
 Each server is an EC2 t2.micro instance running Apache w/Passenger module.
-Servers update to the latest GitHub commmits automatically.
+Servers update to the latest GitHub commits automatically.
 
 - William Ramirez
 - Drewry Pope
