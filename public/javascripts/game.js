@@ -16,6 +16,7 @@ var startAmmo = 10; // Starting ammo
 var playerAlive = true;
 var asteroidCount = 3;
 var totalAsteroids = asteroidCount;
+var lives = 3;
 
 function create() {
 
@@ -153,8 +154,14 @@ function hitAsteroid (rock, bullet) {
 }
 
 function shipHit (ship) {
-    playerAlive = false;
-    respawnPlayer();
+    if (lives > 0) {
+        lives --;
+        playerAlive = false;
+        respawnPlayer();
+    } else {
+        ship.kill();
+        playerAlive = false;
+    }
 }
 
 function respawnPlayer () {
