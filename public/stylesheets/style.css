@@ -15,15 +15,69 @@
  */
 h1 {
     text-align: center;
-    color: red;
+    color: blue;
     font-size: 36px;
+    background-color: white;
 }
 
-#gameDiv {
+h3 {
+    position: relative;
+    color: white;
+    text-align: center;
+    top: -20px;
+}
+
+h4 {
+    position: relative;
+    text-align: right;
+    left: 188px;
+    top: 5px;
+}
+
+#title {
+    position: relative;
     width: 800px;
     margin: auto;
 }
 
+#gameDiv {
+    position: relative;
+    width: 800px;
+    margin: auto;
+}
+
+#leaderBoard {
+    position: absolute;
+    border-radius: 25px;
+    background: black;
+    padding: 20px; 
+    width: 200px;
+    height: 300px;
+    left: 80%;
+    bottom: 295px;
+}
+
+#controlsDiv {
+    position: absolute;
+    border-radius: 25px;
+    background: black;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;
+    left: 80%;
+    bottom: 85px;
+    content: url("../images/Controls.png");
+}
+
 body {
     background-image: url("../images/BlueprintBackground.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+#container {
+    margin:auto;
+    width:70%;
+    height:auto;
 }

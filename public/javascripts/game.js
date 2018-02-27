@@ -10,6 +10,9 @@ var sprite;
 var cursors;
 var weapon;
 var fireButton;
+var safeTime;
+var respawnTime = 2000; // 2 seconds rocks wont fly at player
+var startAmmo = 10; // Starting ammo
 var playerAlive = true;
 var asteroidCount = 3;
 var totalAsteroids = asteroidCount;
@@ -21,7 +24,7 @@ function create() {
     game.add.sprite(0, 0, 'background');
     
     // Add player sprite
-    player = game.add.sprite(375, game.world.height - 150, 'player');
+    player = game.add.sprite(game.world.width * .5, game.world.height - 150, 'player');
     
     // Add physics to player
     game.physics.arcade.enable(player);
@@ -53,6 +56,9 @@ function create() {
     // The rate at which bullets are fired
     weapon.fireRate = 200;
 
+    // The ammo count
+    weapon.fireLimit = startAmmo;
+
     // Set weapon to player
     weapon.trackSprite(player, 25, 0, true);
 
@@ -83,7 +89,7 @@ function createAsteroid (x, y, asset) {
 function resetAsteroids () {
     for (i=0; i < asteroidCount; i++) {
         x = Math.random() * 800;
-        y = Math.round(Math.random()) * 600;
+        y = 0;
         createAsteroid(x, y, 'asteroid');
     }
 }
@@ -128,11 +134,16 @@ function update() {
     for (i=0; i < totalAsteroids; i++) {
         if (playerAlive == true) {
             game.physics.arcade.moveToObject(asteroidGroup.children[i], player, 60);
+            game.physics.arcade.collide(player, asteroidGroup.children[i], shipHit, null, this);
+            game.physics.arcade.overlap(asteroidGroup.children[i], weapon.bullets, hitAsteroid, null, this);
         } else {
             asteroidGroup.children[i].velocity = asteroidGroup.children[i].velocity;
         }
-        game.physics.arcade.collide(player, asteroidGroup.children[i], shipHit, null, this);
-        game.physics.arcade.overlap(asteroidGroup.children[i], weapon.bullets, hitAsteroid, null, this);
+        
+    }
+
+    if (safeTime < game.time.now) {
+        playerAlive = true;
     }
 
 }
@@ -145,9 +156,17 @@ function hitAsteroid (rock, bullet) {
 function shipHit (ship) {
     if (lives > 0) {
         lives --;
-        playerAlive = true;
+        playerAlive = false;
+        respawnPlayer();
     } else {
         ship.kill();
         playerAlive = false;
     }
+}
+
+function respawnPlayer () {
+    player.reset(game.world.width * .5, game.world.height - 150);
+    safeTime = game.time.now + respawnTime;
+    weapon.firelimit = startAmmo;
+    weapon.resetShots();
 }

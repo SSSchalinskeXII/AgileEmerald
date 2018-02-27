@@ -1,36 +1,25 @@
-== README
+== The No-Name Game
+Website :: http://rocket.jar.run
+Dev Website :: http://dev.rocket.jar.run
+Master Branch :: https://github.com/SSSchalinskeXII/AgileEmerald/tree/master
+Develop Branch :: https://github.com/SSSchalinskeXII/AgileEmerald
+Project :: https://github.com/SSSchalinskeXII/AgileEmerald/projects/1
+Bugs :: https://github.com/SSSchalinskeXII/AgileEmerald/issues
+Pull Requests :: https://github.com/SSSchalinskeXII/AgileEmerald/pulls
+====Pull requests welcome!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a game which is very much like Asteroids. Characters have limited lives and ammo, the ship pulls asteroids towards it, high point scores give lives, satellite powerups give ammo and are dropped after random intervals or after destroying large asteroids.
 
-Things you may want to cover:
+The game engine is written in Phaser/JS. 
+The server-side framework is Ruby on Rails. 
+Authentication and metrics are powered by Google OAuth.
+The database is SQLite.
+Each server is an EC2 t2.micro instance running Apache w/Passenger module.
+Servers update to the latest GitHub commits automatically.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-
--William Ramirez
--Drewry Pope
--Jessica Vollmer
--Ethan Erickson
--Seth Schalinske
+- William Ramirez
+- Drewry Pope
+- Jessica Vollmer
+- Ethan Erickson
+- Seth Schalinske
 =======
-
