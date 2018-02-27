@@ -143,6 +143,11 @@ function hitAsteroid (rock, bullet) {
 }
 
 function shipHit (ship) {
-    ship.kill();
-    playerAlive = false;
+    if (lives > 0) {
+        lives --;
+        playerAlive = true;
+    } else {
+        ship.kill();
+        playerAlive = false;
+    }
 }
