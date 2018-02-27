@@ -13,6 +13,7 @@ var fireButton;
 var playerAlive = true;
 var asteroidCount = 3;
 var totalAsteroids = asteroidCount;
+var lives = 3;
 
 function create() {
 
