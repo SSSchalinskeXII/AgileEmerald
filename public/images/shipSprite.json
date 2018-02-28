@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "SpaceShip.png",
+	"frame": {"x":1,"y":1,"w":341,"h":156},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":341,"h":156},
+	"sourceSize": {"w":344,"h":164}
+},
+{
+	"filename": "SpaceShipNoFlame.png",
+	"frame": {"x":687,"y":1,"w":313,"h":156},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":28,"y":4,"w":313,"h":156},
+	"sourceSize": {"w":344,"h":164}
+},
+{
+	"filename": "TransparentSpaceShip.png",
+	"frame": {"x":344,"y":1,"w":341,"h":156},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":341,"h":156},
+	"sourceSize": {"w":344,"h":164}
+},
+{
+	"filename": "TransparentSpaceShipNoFlame.png",
+	"frame": {"x":1002,"y":1,"w":313,"h":156},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":28,"y":4,"w":313,"h":156},
+	"sourceSize": {"w":344,"h":164}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "shipSprite.png",
+	"format": "RGBA8888",
+	"size": {"w":1316,"h":158},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:07eee1e64410b5093834b1fa04a9d432:4ffadecdee64807e0a5a63dd8ded8ebc:9540a9a6e686b5b4e58c0aa5f215b5ee$"
+}
+}
