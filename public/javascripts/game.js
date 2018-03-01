@@ -81,6 +81,16 @@ function create() {
     pause_button = game.add.button(700, 20, 'pauseBtn', pause, this);
 }
 
+// Pause function
+function pause() {
+    // Pause the game
+    game.paused = true;
+
+    // Add start button
+    start_button = game.add.button(game.world.centerX - 95, 400, 'resume', unpause, this, 2, 1, 0);
+};
+
+
 function createAsteroid (x, y, asset) {
     asteroid = this.asteroidGroup.create(x, y, asset);
     asteroid.anchor.setTo(0.5, 0.5);
