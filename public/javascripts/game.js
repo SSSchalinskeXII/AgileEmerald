@@ -44,10 +44,10 @@ function create() {
     // Set max speed
     player.body.maxVelocity.set(300);
 
-    //  Creates 30 bullets, using the 'bullet' graphic
+    // Creates 30 bullets, using the 'bullet' graphic
     weapon = game.add.weapon(30, 'bullet');
 
-    //  The bullet will be automatically killed when it leaves the world bounds
+    // The bullet will be automatically killed when it leaves the world bounds
     weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
 
     //  The speed at which the bullet is fired
@@ -90,6 +90,19 @@ function pause() {
     start_button = game.add.button(game.world.centerX - 95, 400, 'resume', unpause, this, 2, 1, 0);
 };
 
+// Unpause function
+function unpause(){
+
+    // Only act if paused
+    if(game.paused){
+
+        // Remove the start button
+        start_button.destroy();
+
+        // Unpause the game
+        game.paused = false;
+    }
+}
 
 function createAsteroid (x, y, asset) {
     asteroid = this.asteroidGroup.create(x, y, asset);
