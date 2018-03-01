@@ -83,18 +83,23 @@ function create() {
 
 // Pause function
 function pause() {
-    // Pause the game
-    game.paused = true;
 
-    // Add start button
-    start_button = game.add.button(game.world.centerX - 95, 400, 'resume', unpause, this, 2, 1, 0);
+    // Only act if unpaused
+    if (!(game.paused)) {
+        
+        // Pause the game
+        game.paused = true;
+
+        // Add start button
+        start_button = game.add.button(game.world.centerX - 95, 400, 'resume', unpause, this, 2, 1, 0);
+    }
 };
 
 // Unpause function
 function unpause(){
 
     // Only act if paused
-    if(game.paused){
+    if (game.paused) {
 
         // Remove the start button
         start_button.destroy();
