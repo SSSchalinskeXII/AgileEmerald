@@ -75,6 +75,10 @@ function create() {
     asteroidGroup.physicsBodyType = Phaser.Physics.ARCADE;
 
     resetAsteroids();
+
+    // Pause menu
+    // Create a pause button
+    pause_button = game.add.button(700, 20, 'pauseBtn', pause, this);
 }
 
 function createAsteroid (x, y, asset) {
