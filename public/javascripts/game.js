@@ -79,6 +79,9 @@ function create() {
     // Pause menu
     // Create a pause button
     pause_button = game.add.button(700, 20, 'pauseBtn', pause, this);
+
+    // Start with game paused
+    game.paused = true;
 }
 
 // Pause function
