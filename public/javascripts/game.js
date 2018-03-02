@@ -82,6 +82,9 @@ function create() {
 
     // Start with game paused
     game.paused = true;
+
+    // Start Game Button
+    start_button = game.add.button(game.world.centerX - 95, 400, 'startBtn', unpause, this);
 }
 
 // Pause function
