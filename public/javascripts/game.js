@@ -215,6 +215,8 @@ function shipHit (ship) {
     
     if (lives > 0) {
         respawnPlayer();
+    } else {
+        gameOver();
     }
 
     updateLives();
