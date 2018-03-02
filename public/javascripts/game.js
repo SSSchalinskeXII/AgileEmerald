@@ -89,6 +89,9 @@ function create() {
 
     // Start Game Button
     start_button = game.add.button(game.world.centerX - 95, 400, 'startBtn', unpause, this);
+
+    // Display number of lives
+    lives_label = game.add.text(20, 20, 'Lives: ' + lives, { font: '24px Arial', fill: '#fff' });
 }
 
 // Pause function
@@ -134,6 +137,11 @@ function resetAsteroids () {
         y = 0;
         createAsteroid(x, y, 'asteroid');
     }
+}
+
+// Update lives
+function updateLives() {
+    lives_label.setText("Lives: " + lives);
 }
 
 function update() {
@@ -201,14 +209,15 @@ function hitAsteroid (rock, bullet) {
 }
 
 function shipHit (ship) {
+    lives --;
+    playerAlive = false;
+    ship.kill();
+    
     if (lives > 0) {
-        lives --;
-        playerAlive = false;
         respawnPlayer();
-    } else {
-        ship.kill();
-        playerAlive = false;
     }
+
+    updateLives();
 }
 
 function respawnPlayer () {
