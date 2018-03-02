@@ -10,6 +10,7 @@ var sprite;
 var cursors;
 var weapon;
 var fireButton;
+var pauseKey;
 var safeTime;
 var respawnTime = 2000; // 2 seconds rocks wont fly at player
 var startAmmo = 10; // Starting ammo
@@ -68,6 +69,9 @@ function create() {
 
     // Define fire button
     fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+    // Define pause key
+    pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
 
     // Add Asteroid sprite
     asteroidGroup = game.add.group();
