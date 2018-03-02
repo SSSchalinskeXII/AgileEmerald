@@ -162,10 +162,15 @@ function update() {
 
     }
 
-    // Weapons firegit 
+    // Weapons fire 
     if (fireButton.isDown) {
 
         weapon.fire();
+    }
+
+    // Pause key
+    if(pauseKey.isDown) {
+        pause();
     }
 
     // Asteroid track towards player movement & collision
