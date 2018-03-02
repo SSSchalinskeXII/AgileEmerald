@@ -228,3 +228,9 @@ function respawnPlayer () {
     weapon.firelimit = startAmmo;
     weapon.resetShots();
 }
+
+function gameOver () {
+    game.paused = true;
+    //gameOver = game.add.sprite(game.world.width * .5, game.world.height - 400, 'gameOver'); // image in the future
+    gameOver = game.add.text(game.world.width -600, game.world.height - 400, 'GAME OVER!', { font: '60px Arial', fill: '#fff' }); // Text for now
+}
