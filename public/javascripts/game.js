@@ -5,6 +5,7 @@ function preload() {
     game.load.image('player', '../images/SpaceShip.png') //Player Character
     game.load.image('bullet', '../images/Bullet.png') //Bullets
     game.load.image('asteroid', '../images/SpaceRock.png') //Asteroids
+    game.load.image('startBtn', '../images/startBtn.png') //Start Button
 };
 var sprite;
 var cursors;
