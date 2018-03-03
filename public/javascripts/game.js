@@ -7,6 +7,7 @@ function preload() {
     game.load.image('asteroid', '../images/SpaceRock.png') //Asteroids
     game.load.image('startBtn', '../images/startBtn.png') //Start Button
     game.load.image('pauseBtn', '../images/pauseBtn.png') //Pause Button
+    game.load.image('playAgain', '../images/playAgain.png')//Play Again Button
 };
 var sprite;
 var cursors;
