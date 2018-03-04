@@ -2,7 +2,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv', { preload: preload,
 
 function preload() {
     game.load.image('background', '../images/StarBackground.png') //Background
-    game.load.image('player', '../images/SpaceShip.png') //Player Character
+    game.load.spritesheet('player', '../images/shipSprite.png', 329, 158, 4) //Player Character
     game.load.image('bullet', '../images/Bullet.png') //Bullets
     game.load.image('asteroid', '../images/SpaceRock.png') //Asteroids
     game.load.image('startBtn', '../images/startBtn.png') //Start Button
@@ -30,7 +30,7 @@ function create() {
     game.add.sprite(0, 0, 'background');
     
     // Add player sprite
-    player = game.add.sprite(game.world.width * .5, game.world.height - 150, 'player');
+    player = game.add.sprite(game.world.width * .5, game.world.height - 150, 'player', 2);
     
     // Add physics to player
     game.physics.arcade.enable(player);
@@ -163,13 +163,20 @@ function update() {
     
     // Movement
     if (cursors.up.isDown) {
-        
+        if (playerAlive) {
+            player.frame = 0;
+        } else {
+            player.frame = 1;
+        }
         game.physics.arcade.accelerationFromRotation(player.rotation, 200, player.body.acceleration);
     
     } else {
-        
+        if (playerAlive) {
+            player.frame = 2;
+        } else {
+            player.frame = 3;
+        }
         player.body.acceleration.set(0);
-    
     }
 
     // Rotation
