@@ -136,6 +136,8 @@ function createAsteroid (x, y, asset) {
     game.physics.arcade.moveToObject(asteroid, player, n);
     s = Math.random() + .1;
     asteroid.scale.setTo(s);
+    // needed to kill asteroid as it leaves the world
+    asteroid.checkWorldBounds = true;
 }
 
 function resetAsteroids () {
@@ -205,7 +207,8 @@ function update() {
         } else {
             asteroidGroup.children[i].velocity = asteroidGroup.children[i].velocity;
         }
-        
+        // When the asteroid leaves the world bounds kill it
+        asteroidGroup.children[i].events.onOutOfBounds.add(asteroidOOB, this);
     }
 
     if (safeTime < game.time.now) {
