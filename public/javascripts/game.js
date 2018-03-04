@@ -21,6 +21,7 @@ var startAmmo = 10; // Starting ammo
 var playerAlive = true;
 var asteroidCount = 3;
 var totalAsteroids = asteroidCount;
+var liveAsteroids;
 var lives = 3;
 
 function create() {
@@ -132,7 +133,7 @@ function createAsteroid (x, y, asset) {
 
     game.physics.arcade.velocityFromRotation(1.53, 10, asteroid.body.velocity);
     game.physics.arcade.moveToObject(asteroid, player, 10);
-
+    
 }
 
 function resetAsteroids () {
@@ -140,6 +141,10 @@ function resetAsteroids () {
         x = Math.random() * 800;
         y = 0;
         createAsteroid(x, y, 'asteroid');
+    }
+    liveAsteroids = asteroidCount;
+    if (totalAsteroids != asteroidCount) {
+        totalAsteroids += asteroidCount;
     }
 }
 
@@ -210,6 +215,11 @@ function update() {
 function hitAsteroid (rock, bullet) {
     rock.kill();
     bullet.kill();
+    liveAsteroids--;
+    if (liveAsteroids == 0) {
+        asteroidCount++;
+        resetAsteroids();
+    }
 }
 
 function shipHit (ship) {
