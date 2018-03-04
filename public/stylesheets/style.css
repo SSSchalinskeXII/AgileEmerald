@@ -17,7 +17,6 @@ h1 {
     text-align: center;
     color: blue;
     font-size: 36px;
-    background-color: white;
 }
 
 h3 {
@@ -32,12 +31,17 @@ h4 {
     text-align: right;
     left: 188px;
     top: 5px;
+    color: #fff;
+    
 }
 
 #title {
     position: relative;
     width: 800px;
+    height: 150px;
     margin: auto;
+    background-image: url("../images/GameTitleText.png");
+    background-size: 100% 100%;
 }
 
 #gameDiv {
@@ -74,6 +78,8 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin: auto;
+    font-family: "Lucida Console", Monaco, monospace;
+    background-color: #0D58CB;
 }
 
 #container {
