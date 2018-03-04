@@ -95,7 +95,7 @@ function create() {
     start_button = game.add.button(game.world.centerX - 95, 400, 'startBtn', unpause, this);
 
     // Display number of lives
-    lives_label = game.add.text(20, 20, 'Lives: ' + lives, { font: '24px Arial', fill: '#fff' });
+    lives_label = game.add.text(20, 20, 'Lives: ' + lives, { font: '24px Lucida Console', fill: '#fff' });
 }
 
 // Pause function
