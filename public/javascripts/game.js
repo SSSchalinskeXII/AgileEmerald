@@ -131,8 +131,9 @@ function createAsteroid (x, y, asset) {
     asteroid = this.asteroidGroup.create(x, y, asset);
     asteroid.anchor.setTo(0.5, 0.5);
 
-    game.physics.arcade.velocityFromRotation(1.53, 10, asteroid.body.velocity);
-    game.physics.arcade.moveToObject(asteroid, player, 10);
+    //game.physics.arcade.velocityFromRotation(1.53, 10, asteroid.body.velocity);
+    n = Math.floor((Math.random() * 50) + 40);
+    game.physics.arcade.moveToObject(asteroid, player, n);
     
 }
 
@@ -197,7 +198,7 @@ function update() {
     // Asteroid track towards player movement & collision
     for (i=0; i < totalAsteroids; i++) {
         if (playerAlive == true) {
-            game.physics.arcade.moveToObject(asteroidGroup.children[i], player, 60);
+            //game.physics.arcade.moveToObject(asteroidGroup.children[i], player, 60);
             game.physics.arcade.collide(player, asteroidGroup.children[i], shipHit, null, this);
             game.physics.arcade.overlap(asteroidGroup.children[i], weapon.bullets, hitAsteroid, null, this);
         } else {
