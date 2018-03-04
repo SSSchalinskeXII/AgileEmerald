@@ -10,6 +10,8 @@ function preload() {
     game.load.image('playAgain', '../images/playAgain.png') //Play Again Button
     game.load.image('resume', '../images/resume.png') //Resume Button
 };
+
+// Variables
 var sprite;
 var cursors;
 var weapon;
@@ -19,10 +21,10 @@ var safeTime;
 var respawnTime = 2000; // 2 seconds rocks wont fly at player
 var startAmmo = 10; // Starting ammo
 var playerAlive = true;
-var asteroidCount = 3;
+var asteroidCount = 3; // Starting asteroids
 var totalAsteroids = asteroidCount;
 var liveAsteroids;
-var lives = 3;
+var lives = 3; // Starting lives
 
 function create() {
 
@@ -78,7 +80,7 @@ function create() {
     // Define pause key
     pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
 
-    // Add Asteroid sprite
+    // Add Asteroid sprite and allow physics
     asteroidGroup = game.add.group();
     asteroidGroup.enableBody = true;
     asteroidGroup.physicsBodyType = Phaser.Physics.ARCADE;
@@ -97,64 +99,6 @@ function create() {
 
     // Display number of lives
     lives_label = game.add.text(20, 20, 'Lives: ' + lives, { font: '24px Lucida Console', fill: '#fff' });
-}
-
-// Pause function
-function pause() {
-
-    // Only act if unpaused
-    if (!(game.paused)) {
-        
-        // Pause the game
-        game.paused = true;
-
-        // Add start button
-        start_button = game.add.button(game.world.centerX - 95, 400, 'resume', unpause, this, 2, 1, 0);
-    }
-};
-
-// Unpause function
-function unpause(){
-
-    // Only act if paused
-    if (game.paused) {
-
-        // Remove the start button
-        start_button.destroy();
-
-        // Unpause the game
-        game.paused = false;
-    }
-}
-
-function createAsteroid (x, y, asset) {
-    asteroid = this.asteroidGroup.create(x, y, asset);
-    asteroid.anchor.setTo(0.5, 0.5);
-
-    //game.physics.arcade.velocityFromRotation(1.53, 10, asteroid.body.velocity);
-    n = Math.floor((Math.random() * 50) + 40);
-    game.physics.arcade.moveToObject(asteroid, player, n);
-    s = Math.random() + .1;
-    asteroid.scale.setTo(s);
-    // needed to kill asteroid as it leaves the world
-    asteroid.checkWorldBounds = true;
-}
-
-function resetAsteroids () {
-    for (i=0; i < asteroidCount; i++) {
-        x = Math.random() * 800;
-        y = 0;
-        createAsteroid(x, y, 'asteroid');
-    }
-    liveAsteroids = asteroidCount;
-    if (totalAsteroids != asteroidCount) {
-        totalAsteroids += asteroidCount;
-    }
-}
-
-// Update lives
-function updateLives() {
-    lives_label.setText("Lives: " + lives);
 }
 
 function update() {
@@ -196,7 +140,6 @@ function update() {
 
     // Weapons fire 
     if (fireButton.isDown) {
-
         weapon.fire();
     }
 
@@ -218,12 +161,41 @@ function update() {
         asteroidGroup.children[i].events.onOutOfBounds.add(asteroidOOB, this);
     }
 
+    // Make player vulnerable again after a time has passed
     if (safeTime < game.time.now) {
         playerAlive = true;
     }
 
 }
 
+// Create asteroids
+function resetAsteroids () {
+    for (i=0; i < asteroidCount; i++) {
+        x = Math.random() * 800;
+        y = 0;
+        createAsteroid(x, y, 'asteroid');
+    }
+    liveAsteroids = asteroidCount;
+    if (totalAsteroids != asteroidCount) {
+        totalAsteroids += asteroidCount;
+    }
+}
+
+// Create an asteroid
+function createAsteroid (x, y, asset) {
+    asteroid = this.asteroidGroup.create(x, y, asset);
+    asteroid.anchor.setTo(0.5, 0.5);
+    // Randomly set speed between 40 and 90
+    n = Math.floor((Math.random() * 50) + 40);
+    game.physics.arcade.moveToObject(asteroid, player, n);
+    // Randomly set size
+    s = Math.random() + .1;
+    asteroid.scale.setTo(s);
+    // needed to kill asteroid as it leaves the world
+    asteroid.checkWorldBounds = true;
+}
+
+// Asteroid hit 
 function hitAsteroid (rock, bullet) {
     rock.kill();
     bullet.kill();
@@ -234,6 +206,7 @@ function hitAsteroid (rock, bullet) {
     }
 }
 
+// Asteroids leaves world bounds
 function asteroidOOB (asteroid) {
     asteroid.kill();
     liveAsteroids--
@@ -243,11 +216,13 @@ function asteroidOOB (asteroid) {
     }
 }
 
+// Ship is hit by asteroid
 function shipHit (ship) {
     lives --;
     playerAlive = false;
     ship.kill();
     
+    // Determine if it is a game over or not
     if (lives > 0) {
         respawnPlayer();
     } else {
@@ -257,6 +232,12 @@ function shipHit (ship) {
     updateLives();
 }
 
+// Update lives
+function updateLives() {
+    lives_label.setText("Lives: " + lives);
+}
+
+// Respawn player
 function respawnPlayer () {
     player.reset(game.world.width * .5, game.world.height - 150);
     safeTime = game.time.now + respawnTime;
@@ -264,6 +245,35 @@ function respawnPlayer () {
     weapon.resetShots();
 }
 
+// Pause function
+function pause() {
+
+    // Only act if unpaused
+    if (!(game.paused)) {
+        
+        // Pause the game
+        game.paused = true;
+
+        // Add start button
+        start_button = game.add.button(game.world.centerX - 95, 400, 'resume', unpause, this, 2, 1, 0);
+    }
+};
+
+// Unpause function
+function unpause(){
+
+    // Only act if paused
+    if (game.paused) {
+
+        // Remove the start button
+        start_button.destroy();
+
+        // Unpause the game
+        game.paused = false;
+    }
+}
+
+// Game Over
 function gameOver () {
     game.paused = true;
     //gameOver = game.add.sprite(game.world.width * .5, game.world.height - 400, 'gameOver'); // image in the future
