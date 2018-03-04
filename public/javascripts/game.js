@@ -9,6 +9,7 @@ function preload() {
     game.load.image('pauseBtn', '../images/pauseBtn.png') //Pause Button
     game.load.image('playAgain', '../images/playAgain.png') //Play Again Button
     game.load.image('resume', '../images/resume.png') //Resume Button
+    game.load.image('gameOver', '../images/gameOverText.png') //Game Over Text
 };
 
 // Variables
@@ -276,6 +277,6 @@ function unpause(){
 // Game Over
 function gameOver () {
     game.paused = true;
-    //gameOver = game.add.sprite(game.world.width * .5, game.world.height - 400, 'gameOver'); // image in the future
-    gameOver = game.add.text(game.world.width -600, game.world.height - 400, 'GAME OVER!', { font: '60px Arial', fill: '#fff' }); // Text for now
+    gameOver = game.add.sprite(game.world.width -775, game.world.height - 400, 'gameOver'); // image in the future
+    //gameOver = game.add.text(game.world.width -600, game.world.height - 400, 'GAME OVER!', { font: '60px Arial', fill: '#fff' }); // Text for now
 }
