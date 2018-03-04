@@ -224,6 +224,15 @@ function hitAsteroid (rock, bullet) {
     }
 }
 
+function asteroidOOB (asteroid) {
+    asteroid.kill();
+    liveAsteroids--
+    if (liveAsteroids == 0) {
+        asteroidCount++;
+        resetAsteroids();
+    }
+}
+
 function shipHit (ship) {
     lives --;
     playerAlive = false;
