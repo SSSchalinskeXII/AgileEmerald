@@ -1,4 +1,4 @@
-# encoding: UTF-8
+git s# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,13 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221203647) do
+ActiveRecord::Schema.define(version: 20180222032733) do
 
   create_table "users", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "name"
+    t.string   "email"
+    t.string   "image"
+    t.string   "token"
     t.string   "oauth_token"
+    t.string   "refresh_token"
     t.datetime "oauth_expires_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
