@@ -134,7 +134,8 @@ function createAsteroid (x, y, asset) {
     //game.physics.arcade.velocityFromRotation(1.53, 10, asteroid.body.velocity);
     n = Math.floor((Math.random() * 50) + 40);
     game.physics.arcade.moveToObject(asteroid, player, n);
-    
+    s = Math.random() + .1;
+    asteroid.scale.setTo(s);
 }
 
 function resetAsteroids () {
