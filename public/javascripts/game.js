@@ -9,6 +9,7 @@ function preload() {
     game.load.image('pauseBtn', '../images/pauseBtn.png') //Pause Button
     game.load.image('playAgain', '../images/playAgain.png') //Play Again Button
     game.load.image('resume', '../images/resume.png') //Resume Button
+    game.load.image('gameOver', '../images/gameOverText.png') //Game Over Text
 };
 
 // Variables
@@ -89,13 +90,13 @@ function create() {
 
     // Pause menu
     // Create a pause button
-    pause_button = game.add.button(700, 20, 'pauseBtn', pause, this);
+    pause_button = game.add.button(730, 20, 'pauseBtn', pause, this);
 
     // Start with game paused
     game.paused = true;
 
     // Start Game Button
-    start_button = game.add.button(game.world.centerX - 95, 400, 'startBtn', unpause, this);
+    start_button = game.add.button(game.world.centerX - 110, 350, 'startBtn', unpause, this);
 
     // Display number of lives
     lives_label = game.add.text(20, 20, 'Lives: ' + lives, { font: '24px Lucida Console', fill: '#fff' });
@@ -255,7 +256,7 @@ function pause() {
         game.paused = true;
 
         // Add start button
-        start_button = game.add.button(game.world.centerX - 95, 400, 'resume', unpause, this, 2, 1, 0);
+        start_button = game.add.button(game.world.centerX - 110, 350, 'resume', unpause, this, 2, 1, 0);
     }
 };
 
@@ -276,6 +277,6 @@ function unpause(){
 // Game Over
 function gameOver () {
     game.paused = true;
-    //gameOver = game.add.sprite(game.world.width * .5, game.world.height - 400, 'gameOver'); // image in the future
-    gameOver = game.add.text(game.world.width -600, game.world.height - 400, 'GAME OVER!', { font: '60px Arial', fill: '#fff' }); // Text for now
+    gameOver = game.add.sprite(game.world.width -775, game.world.height - 400, 'gameOver'); // image in the future
+    //gameOver = game.add.text(game.world.width -600, game.world.height - 400, 'GAME OVER!', { font: '60px Arial', fill: '#fff' }); // Text for now
 }
