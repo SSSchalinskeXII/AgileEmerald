@@ -27,6 +27,7 @@ var asteroidCount = 3; // Starting asteroids
 var totalAsteroids = asteroidCount;
 var liveAsteroids;
 var lives = 3; // Starting lives
+var ammo = startAmmo;
 
 function create() {
 
@@ -101,6 +102,9 @@ function create() {
 
     // Display number of lives
     lives_label = game.add.text(20, 20, 'Lives: ' + lives, { font: '24px Lucida Console', fill: '#fff' });
+
+    // Dusplay ammo count
+    ammo_label = game.add.text(200, 20, 'Ammo: ' + ammo,  { font: '24px Lucida Console', fill: '#fff' });
 }
 
 function update() {
