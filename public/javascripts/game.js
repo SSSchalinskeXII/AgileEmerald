@@ -104,7 +104,7 @@ function create() {
     lives_label = game.add.text(20, 20, 'Lives: ' + lives, { font: '24px Lucida Console', fill: '#fff' });
 
     // Dusplay ammo count
-    ammo_label = game.add.text(200, 20, 'Ammo: ' + ammo,  { font: '24px Lucida Console', fill: '#fff' });
+    ammo_label = game.add.text(20, 50, 'Ammo: ' + ammo,  { font: '24px Lucida Console', fill: '#fff' });
 }
 
 function update() {
@@ -147,6 +147,7 @@ function update() {
     // Weapons fire 
     if (fireButton.isDown) {
         weapon.fire();
+        updateAmmo();
     }
 
     // Pause key
@@ -248,11 +249,14 @@ function respawnPlayer () {
     player.reset(game.world.width * .5, game.world.height - 150);
     safeTime = game.time.now + respawnTime;
     weapon.firelimit = startAmmo;
+    ammo = startAmmo;
     weapon.resetShots();
+    updateAmmo();
 }
 
 // Update Ammo Counter
 function updateAmmo () {
+    ammo = startAmmo - weapon.shots;
     ammo_label.setText("Ammo: " + ammo);
 }
 
