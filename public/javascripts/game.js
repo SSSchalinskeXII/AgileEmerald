@@ -235,7 +235,7 @@ function shipHit (ship) {
 }
 
 // Update lives
-function updateLives() {
+function updateLives () {
     lives_label.setText("Lives: " + lives);
 }
 
@@ -245,6 +245,11 @@ function respawnPlayer () {
     safeTime = game.time.now + respawnTime;
     weapon.firelimit = startAmmo;
     weapon.resetShots();
+}
+
+// Update Ammo Counter
+function updateAmmo () {
+    ammo_label.setText("Ammo: " + ammo);
 }
 
 // Pause function
