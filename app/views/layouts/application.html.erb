@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="en-US">
- <head>
- <title>The No-Name Game</title>
-<script src="javascripts/phaser.js"></script>
-<%= stylesheet_link_tag 'style', media: 'all', 'data-turbolinks-track' => true %>
- <%= csrf_meta_tags %>
- </head>
- <body>
- <div id="container">
- <header>
- <div id="title">
- </div>
- </header>
- <div class="container">
-      <% if current_user %>
-      
-       <%= image_tag current_user.image, class: "img-circle", width: 24 %> 
-       <%= current_user.email %>
-        Signed in as <strong><%= current_user.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% else %>
-        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-      <% end %>
-       <%= yield %>
- </div>
- <section class="content">
- <%= yield %>
- </section>
- <footer>
- <h4>Copyright <%=Date.today.year %> TheNoNameGame</h4>
- </footer>
- </div>
- </body>
+<head>
+	<title>The No-Name Game</title>
+	<script src="javascripts/phaser.js"></script>
+	<%= stylesheet_link_tag 'style', media: 'all', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="container">
+		<header>
+			<div id="title"></div>
+		</header>
+		<div class="container">
+			<% if current_user %>
+				<%= image_tag current_user.image, class: "img-circle", width: 24 %> 
+				<%= current_user.email %>
+				Signed in as <strong><%= current_user.name %></strong>!
+				<%= link_to "Sign out", signout_path, id: "sign_out" %>
+			<% end %>
+			<%= yield %>
+		</div>
+		<% if current_user %>
+			<section class="content"></section>
+			<%= yield %>
+		<% else %>
+			<%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+		<% end %>
+		<footer>
+			<h4>Copyright <%=Date.today.year %> TheNoNameGame</h4>
+		</footer>
+	</div>
+</body>
+<% if current_user %>
+	<script src="javascripts/game.js" data-turbolinks-track="false"></script>
+<% end %>
 </html>
-<script src="javascripts/game.js" data-turbolinks-track="false"></script>
