@@ -10,6 +10,7 @@ function preload() {
     game.load.image('playAgain', '../images/playAgain.png') //Play Again Button
     game.load.image('resume', '../images/resume.png') //Resume Button
     game.load.image('gameOver', '../images/gameOverText.png') //Game Over Text
+    game.load.image('ammo', '../images/SpaceJunk.phg') // Ammo powerup.
 };
 
 // Variables
