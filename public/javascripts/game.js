@@ -109,12 +109,12 @@ function create() {
     // Dusplay ammo count
     ammo_label = game.add.text(20, 50, 'Ammo: ' + ammo,  { font: '24px Lucida Console', fill: '#fff' });
 
-    // Add Satalite (ammo) sprite and allow physics
-    satliteAmmoGroup = game.add.group();
-    satliteAmmoGroup.enableBody = true;
-    //satliteAmmoGroup.physicsBodyType = Phaser.Physics.ARCADE;
+    // Add Satallite (ammo) sprite and allow physics
+    satelliteAmmoGroup = game.add.group();
+    satelliteAmmoGroup.enableBody = true;
+    //satelliteAmmoGroup.physicsBodyType = Phaser.Physics.ARCADE;
 
-    resetSataliteAmmo();
+    resetSatelliteAmmo();
 }
 
 function update() {
@@ -179,9 +179,9 @@ function update() {
     }
 
     for (i=0; i < totalSatAmmo; i++) {
-        game.physics.arcade.overlap(player, satliteAmmoGroup.children[i], shipHitStatliteAmmo, null, this);
-        game.physics.arcade.overlap(satliteAmmoGroup.children[i], weapon.bullets, hitSataliteAmmo, null, this);
-        game.physics.arcade.moveToXY(satliteAmmoGroup.children[i], x2, 650, n);
+        game.physics.arcade.overlap(player, satelliteAmmoGroup.children[i], shipHitSatelliteAmmo, null, this);
+        game.physics.arcade.overlap(satelliteAmmoGroup.children[i], weapon.bullets, hitSatelliteAmmo, null, this);
+        game.physics.arcade.moveToXY(satelliteAmmoGroup.children[i], x2, 650, n);
     }
 
     // Make player vulnerable again after a time has passed
@@ -191,7 +191,7 @@ function update() {
 
     // Spawn ammo drops at intervals minimum 10 seonds increasing by 5 seconds
     if (ammoSpawnTime < game.time.now) {
-        resetSataliteAmmo();
+        resetSatelliteAmmo();
         ammoSpawnTime = game.time.now  + 10000;
     }
 }
@@ -276,15 +276,15 @@ function respawnPlayer () {
 }
 
 // Create asteroids
-function resetSataliteAmmo () {
+function resetSatelliteAmmo () {
     x = Math.random() * 800;
     y = 0;
-    createSataliteAmmo(x, y, 'ammo');
+    createSatelliteAmmo(x, y, 'ammo');
 }
 
 // Create an asteroid
-function createSataliteAmmo (x, y, asset) {
-    satAmmo = this.satliteAmmoGroup.create(x, y, asset);
+function createSatelliteAmmo (x, y, asset) {
+    satAmmo = this.satelliteAmmoGroup.create(x, y, asset);
     satAmmo.anchor.setTo(0.5, 0.5);
     // Randomly set speed between 40 and 90
     n = Math.floor((Math.random() * 100) + 70);
@@ -299,13 +299,13 @@ function createSataliteAmmo (x, y, asset) {
 }
 
 // Bullet Collides with Satalite Ammo
-function hitSataliteAmmo (satAmmo, bullet) {
+function hitSatelliteAmmo (satAmmo, bullet) {
     satAmmo.kill();
     bullet.kill();
 }
 
 // Ship Collides with Satalite Ammo
-function shipHitStatliteAmmo (player, satAmmo) {
+function shipHitSatelliteAmmo (player, satAmmo) {
     satAmmo.kill();
     weapon.resetShots();
     updateAmmo();
