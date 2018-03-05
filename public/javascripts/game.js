@@ -90,13 +90,13 @@ function create() {
 
     // Pause menu
     // Create a pause button
-    pause_button = game.add.button(700, 20, 'pauseBtn', pause, this);
+    pause_button = game.add.button(730, 20, 'pauseBtn', pause, this);
 
     // Start with game paused
     game.paused = true;
 
     // Start Game Button
-    start_button = game.add.button(game.world.centerX - 95, 400, 'startBtn', unpause, this);
+    start_button = game.add.button(game.world.centerX - 110, 350, 'startBtn', unpause, this);
 
     // Display number of lives
     lives_label = game.add.text(20, 20, 'Lives: ' + lives, { font: '24px Lucida Console', fill: '#fff' });
@@ -256,7 +256,7 @@ function pause() {
         game.paused = true;
 
         // Add start button
-        start_button = game.add.button(game.world.centerX - 95, 400, 'resume', unpause, this, 2, 1, 0);
+        start_button = game.add.button(game.world.centerX - 110, 350, 'resume', unpause, this, 2, 1, 0);
     }
 };
 
