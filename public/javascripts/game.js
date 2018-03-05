@@ -192,7 +192,7 @@ function update() {
     // Spawn ammo drops at intervals minimum 10 seonds increasing by 5 seconds
     if (ammoSpawnTime < game.time.now) {
         resetSataliteAmmo();
-        ammoSpawnTime = game.time.now  + ammoSpawnTime;
+        ammoSpawnTime = game.time.now  + 10000;
     }
 }
 
