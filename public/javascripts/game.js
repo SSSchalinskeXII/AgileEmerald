@@ -10,7 +10,7 @@ function preload() {
     game.load.image('playAgain', '../images/playAgain.png') //Play Again Button
     game.load.image('resume', '../images/resume.png') //Resume Button
     game.load.image('gameOver', '../images/gameOverText.png') //Game Over Text
-    game.load.image('ammo', '../images/SpaceJunk.phg') // Ammo powerup.
+    game.load.image('ammo', '../images/SpaceJunk.png') // Ammo powerup.
 };
 
 // Variables
@@ -28,6 +28,9 @@ var totalAsteroids = asteroidCount;
 var liveAsteroids;
 var lives = 3; // Starting lives
 var ammo = startAmmo;
+var ammoSpawnTime = 10000; // 10 seconds between ammo drops
+var totalSatAmmo = 0;
+var x2; // Fly to point
 
 function create() {
 
@@ -105,6 +108,13 @@ function create() {
 
     // Dusplay ammo count
     ammo_label = game.add.text(20, 50, 'Ammo: ' + ammo,  { font: '24px Lucida Console', fill: '#fff' });
+
+    // Add Satalite (ammo) sprite and allow physics
+    satliteAmmoGroup = game.add.group();
+    satliteAmmoGroup.enableBody = true;
+    //satliteAmmoGroup.physicsBodyType = Phaser.Physics.ARCADE;
+
+    resetSataliteAmmo();
 }
 
 function update() {
@@ -160,12 +170,18 @@ function update() {
         if (playerAlive == true) {
             //game.physics.arcade.moveToObject(asteroidGroup.children[i], player, 60);
             game.physics.arcade.collide(player, asteroidGroup.children[i], shipHit, null, this);
-            game.physics.arcade.overlap(asteroidGroup.children[i], weapon.bullets, hitAsteroid, null, this);
         } else {
             asteroidGroup.children[i].velocity = asteroidGroup.children[i].velocity;
         }
+        game.physics.arcade.overlap(asteroidGroup.children[i], weapon.bullets, hitAsteroid, null, this);
         // When the asteroid leaves the world bounds kill it
         asteroidGroup.children[i].events.onOutOfBounds.add(asteroidOOB, this);
+    }
+
+    for (i=0; i < totalSatAmmo; i++) {
+        game.physics.arcade.overlap(player, satliteAmmoGroup.children[i], shipHitStatliteAmmo, null, this);
+        game.physics.arcade.overlap(satliteAmmoGroup.children[i], weapon.bullets, hitSataliteAmmo, null, this);
+        game.physics.arcade.moveToXY(satliteAmmoGroup.children[i], x2, 650, n);
     }
 
     // Make player vulnerable again after a time has passed
@@ -173,6 +189,11 @@ function update() {
         playerAlive = true;
     }
 
+    // Spawn ammo drops at intervals minimum 10 seonds increasing by 5 seconds
+    if (ammoSpawnTime < game.time.now) {
+        resetSataliteAmmo();
+        ammoSpawnTime = game.time.now  + ammoSpawnTime;
+    }
 }
 
 // Create asteroids
@@ -252,6 +273,47 @@ function respawnPlayer () {
     ammo = startAmmo;
     weapon.resetShots();
     updateAmmo();
+}
+
+// Create asteroids
+function resetSataliteAmmo () {
+    x = Math.random() * 800;
+    y = 0;
+    createSataliteAmmo(x, y, 'ammo');
+}
+
+// Create an asteroid
+function createSataliteAmmo (x, y, asset) {
+    satAmmo = this.satliteAmmoGroup.create(x, y, asset);
+    satAmmo.anchor.setTo(0.5, 0.5);
+    // Randomly set speed between 40 and 90
+    n = Math.floor((Math.random() * 100) + 70);
+    // set size
+    satAmmo.scale.setTo(.25);
+    // needed to kill satAmmo as it leaves the world
+    satAmmo.checkWorldBounds = true;
+    // Increase totalSatAmmo
+    totalSatAmmo++;
+    // Fly to point
+    x2 = Math.random() * 800;
+}
+
+// Bullet Collides with Satalite Ammo
+function hitSataliteAmmo (satAmmo, bullet) {
+    satAmmo.kill();
+    bullet.kill();
+}
+
+// Ship Collides with Satalite Ammo
+function shipHitStatliteAmmo (player, satAmmo) {
+    satAmmo.kill();
+    weapon.resetShots();
+    updateAmmo();
+}
+
+// StatliteAmmo leaves world bounds
+function satAmmoOOB (satAmmo) {
+    satAmmo.kill();
 }
 
 // Update Ammo Counter
