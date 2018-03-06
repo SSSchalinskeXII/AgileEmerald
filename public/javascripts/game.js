@@ -114,7 +114,6 @@ function create() {
     satelliteAmmoGroup.enableBody = true;
     //satelliteAmmoGroup.physicsBodyType = Phaser.Physics.ARCADE;
 
-    resetSatelliteAmmo();
 }
 
 function update() {
@@ -181,7 +180,6 @@ function update() {
     for (i=0; i < totalSatAmmo; i++) {
         game.physics.arcade.overlap(player, satelliteAmmoGroup.children[i], shipHitSatelliteAmmo, null, this);
         game.physics.arcade.overlap(satelliteAmmoGroup.children[i], weapon.bullets, hitSatelliteAmmo, null, this);
-        game.physics.arcade.moveToXY(satelliteAmmoGroup.children[i], x2, 650, n);
     }
 
     // Make player vulnerable again after a time has passed
@@ -296,6 +294,8 @@ function createSatelliteAmmo (x, y, asset) {
     totalSatAmmo++;
     // Fly to point
     x2 = Math.random() * 800;
+    game.physics.arcade.moveToXY(satelliteAmmoGroup.children[i], x2, 650, n);
+
 }
 
 // Bullet Collides with Satalite Ammo
