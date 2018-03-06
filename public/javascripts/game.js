@@ -32,7 +32,7 @@ var ammo = startAmmo;
 var ammoSpawnTime = 10000; // 10 seconds between ammo drops
 var totalSatAmmo = 0;
 //var x2; // Fly to point
-var totalRoadster; 
+var totalRoadster = 0; 
 var roadsterSpawnTime = 20000; // Set to 20 seconds for demonstration
 var playerInvincible = false;
 var playerInvincibleTime;
@@ -175,16 +175,7 @@ function update() {
 
     // Asteroid track towards player movement & collision
     for (i=0; i < totalAsteroids; i++) {
-        if (playerAlive == true) {
-            //game.physics.arcade.moveToObject(asteroidGroup.children[i], player, 60);
-            if (playerInvincible) {
-                game.physics.arcade.collide(player, asteroidGroup.children[i], invincibleShipHit, null, this);
-            } else {
-                game.physics.arcade.collide(player, asteroidGroup.children[i], shipHit, null, this);
-            }
-        } else {
-            asteroidGroup.children[i].velocity = asteroidGroup.children[i].velocity;
-        }
+        game.physics.arcade.collide(player, asteroidGroup.children[i], shipHit, null, this);
         game.physics.arcade.overlap(asteroidGroup.children[i], weapon.bullets, hitAsteroid, null, this);
         // When the asteroid leaves the world bounds kill it
         asteroidGroup.children[i].events.onOutOfBounds.add(asteroidOOB, this);
@@ -274,19 +265,28 @@ function asteroidOOB (asteroid) {
 }
 
 // Ship is hit by asteroid
-function shipHit (ship) {
-    lives --;
-    playerAlive = false;
-    ship.kill();
-    
-    // Determine if it is a game over or not
-    if (lives > 0) {
-        respawnPlayer();
+function shipHit (ship, rock) {
+    console.log(playerInvincible);
+    if (playerInvincible == true) {
+        rock.kill();
+        liveAsteroids--;
+        if (liveAsteroids == 0) {
+            asteroidCount++;
+            resetAsteroids();
+        }
     } else {
-        gameOver();
+        lives --;
+        playerAlive = false;
+        ship.kill();
+    
+        // Determine if it is a game over or not
+        if (lives > 0) {
+            respawnPlayer();
+        } else {
+            gameOver();
+        }
+        updateLives();
     }
-
-    updateLives();
 }
 
 // Update lives
@@ -377,9 +377,10 @@ function hitRoadster (roadsterPU, bullet) {
 }
 
 // Ship Collides with roadster
-function shipHitRoadster (player, roadsterPU) {
+function shipHitRoadster (ship, roadsterPU) {
     roadsterPU.kill();
-    playerInvinvible = true;
+    playerInvincible = true;
+    console.log("invincible = true");
     playerInvincibleTime = game.time.now + 10000; // Invincible time 10 seconds
 }
 
