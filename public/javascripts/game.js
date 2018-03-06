@@ -198,7 +198,7 @@ function update() {
     }
 }
 
-// Create asteroids
+// Reset asteroids
 function resetAsteroids () {
     for (i=0; i < asteroidCount; i++) {
         x = Math.random() * 800;
@@ -277,14 +277,14 @@ function respawnPlayer () {
     updateAmmo();
 }
 
-// Create asteroids
+// Reset satellite
 function resetSatelliteAmmo () {
     x = Math.random() * 800;
     y = 0;
     createSatelliteAmmo(x, y, 'ammo');
 }
 
-// Create an asteroid
+// Create satellite
 function createSatelliteAmmo (x, y, asset) {
     satAmmo = this.satelliteAmmoGroup.create(x, y, asset);
     satAmmo.anchor.setTo(0.5, 0.5);
@@ -299,7 +299,6 @@ function createSatelliteAmmo (x, y, asset) {
     // Fly to point
     x2 = Math.random() * 800;
     game.physics.arcade.moveToXY(satelliteAmmoGroup.children[i], x2, 650, n);
-
 }
 
 // Bullet Collides with Satalite Ammo
@@ -318,6 +317,30 @@ function shipHitSatelliteAmmo (player, satAmmo) {
 // StatliteAmmo leaves world bounds
 function satAmmoOOB (satAmmo) {
     satAmmo.kill();
+}
+
+// Reset roadster
+function resetRoadster () {
+    x = Math.random() * 800;
+    y = 0;
+    createRoadster(x, y, 'roadster');
+}
+
+// Create roadster
+function createRoadster (x, y, asset) {
+    roadsterPU = this.roadsterPowerupGroup.create(x, y, asset);
+    roadsterPU.anchor.setTo(0.5, 0.5);
+    // Randomly set speed between 40 and 90
+    n = Math.floor((Math.random() * 100) + 70);
+    // set size
+    roadsterPU.scale.setTo(.25);
+    // needed to kill roadsterPU as it leaves the world
+    roadsterPU.checkWorldBounds = true;
+    // Increase totalRoadster
+    totalRoadster++;
+    // Fly to point
+    x3 = Math.random() * 800;
+    game.physics.arcade.moveToXY(roadsterPowerupGroup.children[i], x3, 650, n);
 }
 
 // Update Ammo Counter
