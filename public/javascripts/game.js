@@ -31,7 +31,8 @@ var lives = 3; // Starting lives
 var ammo = startAmmo;
 var ammoSpawnTime = 10000; // 10 seconds between ammo drops
 var totalSatAmmo = 0;
-var x2; // Fly to point
+//var x2; // Fly to point
+var totalRoadster; 
 
 function create() {
 
@@ -185,6 +186,11 @@ function update() {
     for (i=0; i < totalSatAmmo; i++) {
         game.physics.arcade.overlap(player, satelliteAmmoGroup.children[i], shipHitSatelliteAmmo, null, this);
         game.physics.arcade.overlap(satelliteAmmoGroup.children[i], weapon.bullets, hitSatelliteAmmo, null, this);
+    }
+
+    for (i=0; i < totalRoadster; i++) {
+        game.physics.arcade.overlap(player, roadsterPowerupGroup.children[i], shipHitRoadster, null, this);
+        game.physics.arcade.overlap(roadsterPowerupGroup.children[i], weapon.bullets, hitRoadster, null, this);
     }
 
     // Make player vulnerable again after a time has passed
