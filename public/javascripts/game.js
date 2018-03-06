@@ -353,6 +353,11 @@ function unpause(){
 // Game Over
 function gameOver () {
     game.paused = true;
-    gameOver = game.add.sprite(game.world.width -775, game.world.height - 400, 'gameOver'); // image in the future
-    //gameOver = game.add.text(game.world.width -600, game.world.height - 400, 'GAME OVER!', { font: '60px Arial', fill: '#fff' }); // Text for now
+    gameOver = game.add.sprite(game.world.width -775, game.world.height - 400, 'gameOver'); 
+    restart_button = game.add.button(game.world.centerX - 110, 400, 'playAgain', restart, this, 2, 1, 0);
+}
+
+// Reload the game
+function restart () {
+     location.reload();
 }
