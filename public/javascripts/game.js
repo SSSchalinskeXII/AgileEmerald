@@ -35,6 +35,7 @@ var totalSatAmmo = 0;
 var totalRoadster; 
 var roadsterSpawnTime = 20000; // Set to 20 seconds for demonstration
 var playerInvincible = false;
+var playerInvincibleTime;
 
 function create() {
 
@@ -176,7 +177,11 @@ function update() {
     for (i=0; i < totalAsteroids; i++) {
         if (playerAlive == true) {
             //game.physics.arcade.moveToObject(asteroidGroup.children[i], player, 60);
-            game.physics.arcade.collide(player, asteroidGroup.children[i], shipHit, null, this);
+            if (playerInvincible) {
+                game.physics.arcade.collide(player, asteroidGroup.children[i], invincibleShipHit, null, this);
+            } else {
+                game.physics.arcade.collide(player, asteroidGroup.children[i], shipHit, null, this);
+            }
         } else {
             asteroidGroup.children[i].velocity = asteroidGroup.children[i].velocity;
         }
@@ -200,6 +205,11 @@ function update() {
     // Make player vulnerable again after a time has passed
     if (safeTime < game.time.now) {
         playerAlive = true;
+    }
+
+    // Make player vulnerable again after a time has passed
+    if (playerInvincibleTime < game.time.now) {
+        playerInvincible = false;
     }
 
     // Spawn ammo drops at intervals 
@@ -370,6 +380,7 @@ function hitRoadster (roadsterPU, bullet) {
 function shipHitRoadster (player, roadsterPU) {
     roadsterPU.kill();
     playerInvinvible = true;
+    playerInvincibleTime = game.time.now + 10000; // Invincible time 10 seconds
 }
 
 // StatliteAmmo leaves world bounds
