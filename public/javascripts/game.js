@@ -31,7 +31,8 @@ var lives = 3; // Starting lives
 var ammo = startAmmo;
 var ammoSpawnTime = 10000; // 10 seconds between ammo drops
 var totalSatAmmo = 0;
-//var x2; // Fly to point
+var x2; // Fly to point
+var y2;
 var totalRoadster = 0; 
 var roadsterSpawnTime = 20000; // Set to 20 seconds for demonstration
 var playerInvincible = false;
@@ -185,12 +186,14 @@ function update() {
         game.physics.arcade.overlap(player, satelliteAmmoGroup.children[i], shipHitSatelliteAmmo, null, this);
         game.physics.arcade.overlap(satelliteAmmoGroup.children[i], weapon.bullets, hitSatelliteAmmo, null, this);
         satelliteAmmoGroup.children[i].events.onOutOfBounds.add(satAmmoOOB, this);
+        game.physics.arcade.moveToXY(satelliteAmmoGroup.children[i], x2, 650, n);
     }
 
     for (i=0; i < totalRoadster; i++) {
         game.physics.arcade.overlap(player, roadsterPowerupGroup.children[i], shipHitRoadster, null, this);
         game.physics.arcade.overlap(roadsterPowerupGroup.children[i], weapon.bullets, hitRoadster, null, this);
         roadsterPowerupGroup.children[i].events.onOutOfBounds.add(roadsterOOB, this);
+        game.physics.arcade.moveToXY(roadsterPowerupGroup.children[i], 850, y2, n);
     }
 
     // Make player vulnerable again after a time has passed
@@ -325,7 +328,7 @@ function createSatelliteAmmo (x, y, asset) {
     totalSatAmmo++;
     // Fly to point
     x2 = Math.random() * 800;
-    game.physics.arcade.moveToXY(satelliteAmmoGroup.children[i], x2, 650, n);
+    game.physics.arcade.moveToXY(satAmmo, x2, 650, n);
 }
 
 // Bullet Collides with Satalite Ammo
@@ -344,6 +347,12 @@ function shipHitSatelliteAmmo (player, satAmmo) {
 // StatliteAmmo leaves world bounds
 function satAmmoOOB (satAmmo) {
     satAmmo.kill();
+}
+
+// Update Ammo Counter
+function updateAmmo () {
+    ammo = startAmmo - weapon.shots;
+    ammo_label.setText("Ammo: " + ammo);
 }
 
 // Reset roadster
@@ -367,7 +376,7 @@ function createRoadster (x, y, asset) {
     totalRoadster++;
     // Fly to point
     y2 = Math.random() * 600;
-    game.physics.arcade.moveToXY(roadsterPowerupGroup.children[i], 850, y2, n);
+    game.physics.arcade.moveToXY(roadsterPU, y2, 650, n);
 }
 
 // Bullet Collides with roadster
@@ -379,6 +388,8 @@ function hitRoadster (roadsterPU, bullet) {
 // Ship Collides with roadster
 function shipHitRoadster (ship, roadsterPU) {
     roadsterPU.kill();
+    lives++;
+    updateLives();
     playerInvincible = true;
     console.log("invincible = true");
     playerInvincibleTime = game.time.now + 10000; // Invincible time 10 seconds
@@ -387,12 +398,6 @@ function shipHitRoadster (ship, roadsterPU) {
 // StatliteAmmo leaves world bounds
 function roadsterOOB (roadsterPU) {
     roadsterPU.kill();
-}
-
-// Update Ammo Counter
-function updateAmmo () {
-    ammo = startAmmo - weapon.shots;
-    ammo_label.setText("Ammo: " + ammo);
 }
 
 // Pause function
