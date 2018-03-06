@@ -33,6 +33,7 @@ var ammoSpawnTime = 10000; // 10 seconds between ammo drops
 var totalSatAmmo = 0;
 //var x2; // Fly to point
 var totalRoadster; 
+var roadsterSpawnTime = 20000; // Set to 20 seconds for demonstration
 
 function create() {
 
@@ -198,10 +199,16 @@ function update() {
         playerAlive = true;
     }
 
-    // Spawn ammo drops at intervals minimum 10 seonds increasing by 5 seconds
+    // Spawn ammo drops at intervals 
     if (ammoSpawnTime < game.time.now) {
         resetSatelliteAmmo();
         ammoSpawnTime = game.time.now  + 10000;
+    }
+
+    // Spawn roadster at intervals 
+    if (roadsterSpawnTime < game.time.now) {
+        resetRoadster();
+        roadsterSpawnTime = game.time.now + (roadsterSpawnTime * 2); 
     }
 }
 
