@@ -34,6 +34,7 @@ var totalSatAmmo = 0;
 //var x2; // Fly to point
 var totalRoadster; 
 var roadsterSpawnTime = 20000; // Set to 20 seconds for demonstration
+var playerInvincible = false;
 
 function create() {
 
@@ -187,11 +188,13 @@ function update() {
     for (i=0; i < totalSatAmmo; i++) {
         game.physics.arcade.overlap(player, satelliteAmmoGroup.children[i], shipHitSatelliteAmmo, null, this);
         game.physics.arcade.overlap(satelliteAmmoGroup.children[i], weapon.bullets, hitSatelliteAmmo, null, this);
+        satelliteAmmoGroup.children[i].events.onOutOfBounds.add(satAmmoOOB, this);
     }
 
     for (i=0; i < totalRoadster; i++) {
         game.physics.arcade.overlap(player, roadsterPowerupGroup.children[i], shipHitRoadster, null, this);
         game.physics.arcade.overlap(roadsterPowerupGroup.children[i], weapon.bullets, hitRoadster, null, this);
+        roadsterPowerupGroup.children[i].events.onOutOfBounds.add(roadsterOOB, this);
     }
 
     // Make player vulnerable again after a time has passed
@@ -355,6 +358,23 @@ function createRoadster (x, y, asset) {
     // Fly to point
     y2 = Math.random() * 600;
     game.physics.arcade.moveToXY(roadsterPowerupGroup.children[i], 850, y2, n);
+}
+
+// Bullet Collides with roadster
+function hitRoadster (roadsterPU, bullet) {
+    roadsterPU.kill();
+    bullet.kill();
+}
+
+// Ship Collides with roadster
+function shipHitRoadster (player, roadsterPU) {
+    roadsterPU.kill();
+    playerInvinvible = true;
+}
+
+// StatliteAmmo leaves world bounds
+function roadsterOOB (roadsterPU) {
+    roadsterPU.kill();
 }
 
 // Update Ammo Counter
