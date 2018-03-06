@@ -109,10 +109,14 @@ function create() {
     // Dusplay ammo count
     ammo_label = game.add.text(20, 50, 'Ammo: ' + ammo,  { font: '24px Lucida Console', fill: '#fff' });
 
-    // Add Satallite (ammo) sprite and allow physics
+    // Add Satallite (ammo) sprite 
     satelliteAmmoGroup = game.add.group();
     satelliteAmmoGroup.enableBody = true;
     //satelliteAmmoGroup.physicsBodyType = Phaser.Physics.ARCADE;
+
+    // Add Roadster (powerup) sprite
+    roadsterPowerupGroup = game.add.group();
+    roadsterPowerupGroup.enableBody = true;
 
 }
 
