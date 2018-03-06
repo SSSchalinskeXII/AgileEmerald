@@ -36,6 +36,27 @@ a#sign_in {
     margin: auto;
 }
 
+.userInfo {
+    background: #000;
+    padding: 10px;
+    padding-left: 20px;
+    border-radius: 25px;
+    width: 800px;
+    margin:auto;
+    margin-bottom: 10px;
+}
+
+.userInfo a {
+    color: #AEC8D7;
+}
+
+/* Add a glow to the sections so they stand out from the background */
+#gameDiv, #leaderBoard, #controlsDiv, a#sign_in, .userInfo {
+    -webkit-box-shadow: 10px 10px 25px -12px rgba(109,224,52,1);
+    -moz-box-shadow: 10px 10px 25px -12px rgba(109,224,52,1);
+    box-shadow: 10px 10px 25px -12px rgba(109,224,52,1);
+}
+
 #leaderBoard {
     position: absolute;
     border-radius: 25px;
@@ -72,6 +93,7 @@ body {
     margin:auto;
     width:70%;
     height:auto;
+    color: #fff;
 }
 
 a#sign_in {
