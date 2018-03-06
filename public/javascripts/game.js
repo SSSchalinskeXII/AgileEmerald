@@ -11,6 +11,7 @@ function preload() {
     game.load.image('resume', '../images/resume.png') //Resume Button
     game.load.image('gameOver', '../images/gameOverText.png') //Game Over Text
     game.load.image('ammo', '../images/SpaceJunk.png') // Ammo powerup.
+    game.load.image('roadster', '../images/Roadster.png')
 };
 
 // Variables
@@ -321,8 +322,8 @@ function satAmmoOOB (satAmmo) {
 
 // Reset roadster
 function resetRoadster () {
-    x = Math.random() * 800;
-    y = 0;
+    x = 0;
+    y = Math.random() * 600;
     createRoadster(x, y, 'roadster');
 }
 
@@ -339,8 +340,8 @@ function createRoadster (x, y, asset) {
     // Increase totalRoadster
     totalRoadster++;
     // Fly to point
-    x3 = Math.random() * 800;
-    game.physics.arcade.moveToXY(roadsterPowerupGroup.children[i], x3, 650, n);
+    y2 = Math.random() * 600;
+    game.physics.arcade.moveToXY(roadsterPowerupGroup.children[i], 850, y2, n);
 }
 
 // Update Ammo Counter
