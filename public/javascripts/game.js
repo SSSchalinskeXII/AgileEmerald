@@ -2,7 +2,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv', { preload: preload,
 
 function preload() {
     game.load.image('background', '../images/StarBackground.png') //Background
-    game.load.spritesheet('player', '../images/shipSprite.png', 329, 158, 4) //Player Character
+    game.load.spritesheet('player', '../images/glowShips.png', 344, 164, 10) //Player Character
     game.load.image('bullet', '../images/Bullet.png') //Bullets
     game.load.image('asteroid', '../images/SpaceRock.png') //Asteroids
     game.load.image('startBtn', '../images/startBtn.png') //Start Button
@@ -133,17 +133,33 @@ function update() {
     // Movement
     if (cursors.up.isDown) {
         if (playerAlive) {
-            player.frame = 0;
+            if (playerInvincibleTime > game.time.now + 5000) {
+                player.frame = 0;
+            } else if (playerInvincibleTime > game.time.now + 2000) {
+                player.frame = 2;
+            } else if (playerInvincibleTime > game.time.now) {
+                player.frame = 4;
+            } else {
+                player.frame = 6;
+            }
         } else {
-            player.frame = 1;
+            player.frame = 8;
         }
         game.physics.arcade.accelerationFromRotation(player.rotation, 200, player.body.acceleration);
     
     } else {
         if (playerAlive) {
-            player.frame = 2;
+            if (playerInvincibleTime > game.time.now + 5000) {
+                player.frame = 1;
+            } else if (playerInvincibleTime > game.time.now + 2000) {
+                player.frame = 3;
+            } else if (playerInvincibleTime > game.time.now) {
+                player.frame = 5;
+            } else {
+                player.frame = 7;
+            }
         } else {
-            player.frame = 3;
+            player.frame = 9;
         }
         player.body.acceleration.set(0);
     }
