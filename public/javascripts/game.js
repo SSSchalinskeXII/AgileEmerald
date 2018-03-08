@@ -425,7 +425,8 @@ function roadsterOOB (roadsterPU) {
 }
 
 function increaseScore (rock) {
-    score = rock.maxHealth;
+    score += 10 * (2.1 - rock.maxHealth);
+    score = Math.round(score);
     score_label.setText("Score: " + score);
 }
 
