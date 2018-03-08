@@ -192,7 +192,9 @@ function update() {
 
     // Asteroid track towards player movement & collision
     for (i=0; i < totalAsteroids; i++) {
-        game.physics.arcade.collide(player, asteroidGroup.children[i], shipHit, null, this);
+        if (playerAlive) {
+            game.physics.arcade.collide(player, asteroidGroup.children[i], shipHit, null, this);
+        }
         game.physics.arcade.overlap(asteroidGroup.children[i], weapon.bullets, hitAsteroid, null, this);
         // When the asteroid leaves the world bounds kill it
         asteroidGroup.children[i].events.onOutOfBounds.add(asteroidOOB, this);
