@@ -37,6 +37,7 @@ var totalRoadster = 0;
 var roadsterSpawnTime = 20000; // Set to 20 seconds for demonstration
 var playerInvincible = false;
 var playerInvincibleTime;
+var score = 0;
 
 function create() {
 
@@ -109,11 +110,14 @@ function create() {
     // Start Game Button
     start_button = game.add.button(game.world.centerX - 110, 350, 'startBtn', unpause, this);
 
-    // Display number of lives
-    lives_label = game.add.text(20, 20, 'Lives: ' + lives, { font: '24px Lucida Console', fill: '#fff' });
+    // Display Score
+    score_label = game.add.text(20, 20, 'Score: ' + score,  { font: '24px Lucida Console', fill: '#fff' });
 
-    // Dusplay ammo count
-    ammo_label = game.add.text(20, 50, 'Ammo: ' + ammo,  { font: '24px Lucida Console', fill: '#fff' });
+    // Display number of lives
+    lives_label = game.add.text(20, 50, 'Lives: ' + lives, { font: '24px Lucida Console', fill: '#fff' });
+
+    // Display ammo count
+    ammo_label = game.add.text(20, 80, 'Ammo: ' + ammo,  { font: '24px Lucida Console', fill: '#fff' });
 
     // Add Satallite (ammo) sprite 
     satelliteAmmoGroup = game.add.group();
