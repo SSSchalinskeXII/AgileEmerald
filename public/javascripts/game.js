@@ -264,6 +264,7 @@ function createAsteroid (x, y, asset) {
     // Randomly set size
     s = Math.random() + .1;
     asteroid.scale.setTo(s);
+    asteroid.maxHealth = s;
     // needed to kill asteroid as it leaves the world
     asteroid.checkWorldBounds = true;
 }
@@ -277,6 +278,7 @@ function hitAsteroid (rock, bullet) {
         asteroidCount++;
         resetAsteroids();
     }
+    increaseScore(rock);    
 }
 
 // Asteroids leaves world bounds
@@ -299,6 +301,7 @@ function shipHit (ship, rock) {
             asteroidCount++;
             resetAsteroids();
         }
+        increaseScore(rock);
     } else {
         lives --;
         playerAlive = false;
@@ -413,13 +416,17 @@ function shipHitRoadster (ship, roadsterPU) {
     lives++;
     updateLives();
     playerInvincible = true;
-    console.log("invincible = true");
     playerInvincibleTime = game.time.now + 10000; // Invincible time 10 seconds
 }
 
 // StatliteAmmo leaves world bounds
 function roadsterOOB (roadsterPU) {
     roadsterPU.kill();
+}
+
+function increaseScore (rock) {
+    score = rock.maxHealth;
+    score_label.setText("Score: " + score);
 }
 
 // Pause function
