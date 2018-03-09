@@ -1,7 +1,22 @@
 <div id=gameDiv></div>
 
 <div id=leaderBoard>
-    <h3>LeaderBoard<h3>
-</div>
+<h3>LeaderBoard<h3>
 
+<table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Email</th>
+        <th>Score</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody class="home-score">
+      <%= render "score" %>
+    </tbody>
+  </table>
+</div>
 <div id=controlsDiv></div>

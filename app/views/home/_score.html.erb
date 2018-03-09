@@ -1,0 +1,8 @@
+<% @scores.each do |score| %>
+  <tr>
+  
+    <td><%= image_tag score.image, class: "img-circle" ,width: 24 %></td>
+    <td><%= score.email.split('@')[0]  %></td>
+    <td><%= score.user_score  %></td>
+  </tr>
+<% end %>

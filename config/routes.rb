@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   #get 'home/show'
 
   #get 'sessions/create'
@@ -12,8 +13,10 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
+  resources :scores
 
   root to: "home#index"
+  #root to: "scores#home"
   #root controller: 'home', action: 'index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

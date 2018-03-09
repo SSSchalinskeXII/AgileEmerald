@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :oauth_token
       t.string :refresh_token
       t.datetime :oauth_expires_at
+      t.string :user_score
 
       t.timestamps null: false
     end
