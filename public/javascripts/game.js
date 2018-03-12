@@ -463,6 +463,14 @@ function gameOver () {
     game.paused = true;
     gameOver = game.add.sprite(game.world.width -775, game.world.height - 400, 'gameOver'); 
     restart_button = game.add.button(game.world.centerX - 110, 400, 'playAgain', restart, this, 2, 1, 0);
+    var array = ["drewrypope@gmail.com", score, "sysdate"];
+
+    $.ajax({
+        url : "/scores",
+        type : "put",
+        data : { data_value: JSON.stringify(array) }
+    });
+
 }
 
 // Reload the game

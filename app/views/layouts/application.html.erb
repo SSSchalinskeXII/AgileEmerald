@@ -2,6 +2,7 @@
 <html lang="en-US">
 <head>
 	<title>The No-Name Game</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="javascripts/phaser.js"></script>
 	<%= stylesheet_link_tag 'style', media: 'all', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
@@ -15,7 +16,7 @@
             <div class="userInfo">
                 <% if current_user %>
 				    <%= image_tag current_user.image, class: "img-circle", width: 24 %> 
-				    <%= current_user.email %>
+				    <div class="email"><%= current_user.email %><div>
 				    Signed in as <strong><%= current_user.name %></strong>!
 				    <%= link_to "Sign out", signout_path, id: "sign_out" %>
             </div>
