@@ -8,9 +8,14 @@
 Score.delete_all
 
 Score.create!([
-  {id: 1, email: "ram@gmail.com", score: 250},
-  {id: 2, email: "nor@mail.com", score: 222},
-  {id: 3, email: "nor2@mail.com", score: 100},
-  {id: 4, email: "nor23@mail.com", score: 21212},
-  {id: 5, email: "nor123@mail.com", score: 90}
+  {id: 1, email: "drewrw@gmail.com", score: 1250},
+  {id: 2, email: "schalen@mail.com", score: 955},
+  {id: 3, email: "goodmc@mail.com", score: 856},
+  {id: 4, email: "rosteee.ee@mail.com", score: 750},
+  {id: 5, email: "ramrsoms@mail.com", score: 755},
+  {id: 6, email: "porter.ras@mail.com", score: 650},
+  {id: 7, email: "razor.mans@mail.com", score: 550},
+  {id: 8, email: "michelle.gosz@mail.com", score: 450},
+  {id: 9, email: "paswlraddis@mail.com", score: 550},
+  {id: 10, email: "wrongtam@mail.com", score: 350}
 ])
