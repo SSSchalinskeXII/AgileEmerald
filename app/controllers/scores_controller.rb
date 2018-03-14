@@ -12,14 +12,20 @@ def index
   end
 
   def new
-    @score = Score.new
+    puts score_params.inspect
+    @score = Score.create(score_params)
+    @score.save
+    respond_to do |wants|
+      wants.json { render json: { "score": "Saved Score!" } }
+    end
+
   end
 
   def create
     @scores = Score.all
     @Score = Score.create(score_params)
             
-
+    redirect_to '/'
     
   end
 
@@ -54,17 +60,6 @@ end
 
 private
   def score_params
-    params.require(:score).permit(:email, :score)
+    params.permit(:score, :email)
   end
-  
-    def gameScore
-    user_score = 120
-    score = Score.create(user_id: session[:user_id], score: user_score)
-    if score.save
-      respond_to do |format|
-        format.html {redirect_to root_path}
-      end
-    end
-  end
-  
 end

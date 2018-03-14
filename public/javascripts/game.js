@@ -473,10 +473,11 @@ function restart () {
 
 function sendScore(s) {
     $.ajax({
-        url: "/scores/new",
-        type: "get",
+        url: "/scores/new.json",
+        type: "POST",
         data: {
-            user_score : s
+            score : s,
+            email : "seth6904@yahoo.com"
         },
         success : function () {
             console.log("Saved");

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'scores/index'
-
+  post 'scores/new', to: 'scores#new'
 
 #  get 'home/:id/edit' => 'home#edit'
 resources "home" do

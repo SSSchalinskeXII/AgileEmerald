@@ -2,10 +2,9 @@
   <tr>
   
    
-    <td><%= score.email.split('@')[0]  %></td>
+    <td><%= score.email %></td>
     <td><%= score.score  %></td>
     
 
-    <td><%= link_to "Edit", edit_score_path(score), remote: true, class: "btn btn-default" %></td>
   </tr>
 <% end %>
