@@ -14,9 +14,11 @@ h3 {
 h4 {
     position: relative;
     text-align: right;
-    left: 188px;
-    top: 5px;
+    padding-left: 10px;
+/*    top: 5px;*/
     color: #fff;
+/*    margin: auto;*/
+    padding-top: 20px;
     
 }
 
@@ -29,21 +31,45 @@ h4 {
     background-size: 100% 100%;
 }
 
-#gameDiv,
-a#sign_in {
+#gameDiv {
     position: relative;
     width: 800px;
     margin: auto;
 }
 
-.userInfo {
-    background: #000;
+.home-score {
+    font-size: 10px;
+}
+
+th {
+    text-align: left;
     padding: 10px;
-    padding-left: 20px;
-    border-radius: 25px;
+}
+
+
+a#sign_in {
+    content: url("../images/GrayedStarBackground.jpg");
+    background: url("../images/PressedGrayedStarBackground.jpg");
     width: 800px;
+    margin-left: 16%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+
+a#sign_in:active {
+    content: url("../images/PressedGrayedStarBackground.jpg");
+}
+
+.userInfo {
+    background: rgba(0, 21, 51, 0.65);
+    padding: 10px;
+    border-radius: 25px;
+    width: 780px;
     margin:auto;
-    margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .userInfo a {
@@ -51,7 +77,7 @@ a#sign_in {
 }
 
 /* Add a glow to the sections so they stand out from the background */
-#gameDiv, #leaderBoard, #controlsDiv, a#sign_in, .userInfo {
+#gameDiv, #leaderBoard, #controlsDiv, a#sign_in, .userInfo, #keyDiv {
     -webkit-box-shadow: 10px 10px 25px -12px rgba(109,224,52,1);
     -moz-box-shadow: 10px 10px 25px -12px rgba(109,224,52,1);
     box-shadow: 10px 10px 25px -12px rgba(109,224,52,1);
@@ -60,12 +86,12 @@ a#sign_in {
 #leaderBoard {
     position: absolute;
     border-radius: 25px;
-    background: black;
-    padding: 20px; 
-    width: 200px;
-    height: 300px;
-    left: 80%;
-    bottom: 295px;
+    background: rgba(0, 21, 51, 0.65);
+    padding: 10px; 
+    width: 250px;
+    height: 550px;
+    left: 90%;
+    margin-top: -73%;
 }
 
 #controlsDiv {
@@ -75,12 +101,25 @@ a#sign_in {
     padding: 20px; 
     width: 200px;
     height: 150px;
-    left: 80%;
-    bottom: 85px;
+    margin-left: 92%;
+    margin-top: -15%;
     content: url("../images/Controls.png");
 }
 
+#keyDiv {
+    position: absolute;
+    width: 200px;
+    height: 800px;
+    margin-left: -100px;
+    margin-top: -73%;
+    background-color: rgba(0, 21, 51, 0.65);
+    content: url("../images/spriteKey.png");
+    border-radius: 25px;
+}
+
 body {
+    position: relative;
+    width: 1280px;
     background-image: url("../images/BlueprintBackground.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -89,18 +128,12 @@ body {
     background-color: #0D58CB;
 }
 
-#container {
+#gameContainer, #gameElements{
+    position: relative;
     margin:auto;
-    width:70%;
+    width:90%;
     height:auto;
     color: #fff;
 }
 
-a#sign_in {
-    content: url("../images/GrayedStarBackground.jpg");
-    background: url("../images/PressedGrayedStarBackground.jpg");
-}
 
-a#sign_in:active {
-    content: url("../images/PressedGrayedStarBackground.jpg");
-}
