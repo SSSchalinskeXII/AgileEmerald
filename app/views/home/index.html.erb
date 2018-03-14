@@ -1,7 +1,12 @@
-<div id=gameDiv></div>
+<% if current_user %>
+
+			<div id=gameElements> 
+    <div id=gameDiv></div>
+
+    <div id=keyDiv></div>
 
 <div id=leaderBoard>
-<h3>LeaderBoard<h3>
+    <h3>Leader Board</h3>
 
 <table class="table table-bordered table-striped">
     <thead>
@@ -20,3 +25,7 @@
   </table>
 </div>
 <div id=controlsDiv></div>
+    </div>
+
+
+		<% end %>
