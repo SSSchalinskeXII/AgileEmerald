@@ -38,9 +38,11 @@ var roadsterSpawnTime = 20000; // Set to 20 seconds for demonstration
 var playerInvincible = false;
 var playerInvincibleTime;
 var score = 0;
+var xmail = document.getElementById("email").innerText;
+
 
 function create() {
-
+console.log(xmail);
     // Add background
     game.add.sprite(0, 0, 'background');
     
@@ -293,7 +295,7 @@ function asteroidOOB (asteroid) {
 
 // Ship is hit by asteroid
 function shipHit (ship, rock) {
-    console.log(playerInvincible);
+
     if (playerInvincible == true) {
         rock.kill();
         liveAsteroids--;
@@ -472,12 +474,13 @@ function restart () {
 }
 
 function sendScore(s) {
+    console.log(xmail);
     $.ajax({
         url: "/scores/new.json",
         type: "POST",
         data: {
             score : s,
-            email : "seth6904@yahoo.com"
+            email : xmail
         },
         success : function () {
             console.log("Saved");
