@@ -14,11 +14,10 @@ h3 {
 h4 {
     position: relative;
     text-align: right;
-    padding-left: 10px;
-/*    top: 5px;*/
+    padding-left: -10px;
     color: #fff;
-/*    margin: auto;*/
     padding-top: 20px;
+    font-size: 14px;
     
 }
 
@@ -53,7 +52,7 @@ a#sign_in {
     width: 800px;
     margin-left: 16%;
     margin-top: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 120px;
 }
 
 
@@ -91,26 +90,26 @@ a#sign_in:active {
     width: 250px;
     height: 550px;
     left: 90%;
-    margin-top: -73%;
+    margin-top: -72%;
 }
 
 #controlsDiv {
     position: absolute;
     border-radius: 25px;
-    background: black;
+    background: rgba(0, 21, 51, 0.65);
     padding: 20px; 
-    width: 200px;
+    width: 238px;
     height: 150px;
-    margin-left: 92%;
+    margin-left: 90%;
     margin-top: -15%;
     content: url("../images/Controls.png");
 }
 
 #keyDiv {
     position: absolute;
-    width: 200px;
+    width: 210px;
     height: 800px;
-    margin-left: -100px;
+    margin-left: -110px;
     margin-top: -73%;
     background-color: rgba(0, 21, 51, 0.65);
     content: url("../images/spriteKey.png");
