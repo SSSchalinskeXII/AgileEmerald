@@ -460,6 +460,7 @@ function unpause(){
 
 // Game Over
 function gameOver () {
+    sendScore(score);
     game.paused = true;
     gameOver = game.add.sprite(game.world.width -775, game.world.height - 400, 'gameOver'); 
     restart_button = game.add.button(game.world.centerX - 110, 400, 'playAgain', restart, this, 2, 1, 0);
@@ -468,4 +469,20 @@ function gameOver () {
 // Reload the game
 function restart () {
      location.reload();
+}
+
+function sendScore(s) {
+    $.ajax({
+        url: "/scores/new",
+        type: "get",
+        data: {
+            user_score : s
+        },
+        success : function () {
+            console.log("Saved");
+        },
+        error : function(xhr, status, error) {
+            console.log(xhr);
+        }
+    })
 }
