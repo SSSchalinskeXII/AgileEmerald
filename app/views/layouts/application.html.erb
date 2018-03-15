@@ -16,7 +16,7 @@
 		<div class="container">
                            <% if current_user %>
             <div class="userInfo">
- <div><span id="email"><%= current_user.email %></span></div>
+ <span id="email"><%= current_user.email %></span>
 				    <%= image_tag current_user.image, class: "img-circle", width: 24 %> 
 				    Signed in as <strong><%= current_user.name %></strong>!
 				    <%= link_to "Sign out", signout_path, id: "sign_out" %>
