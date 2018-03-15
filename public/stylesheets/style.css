@@ -9,14 +9,14 @@ h3 {
     color: white;
     text-align: center;
     top: -20px;
+    font-size: 24px;
 }
 
 h4 {
     position: relative;
-    text-align: right;
-    padding-left: -10px;
+    text-align: center;
     color: #fff;
-    padding-top: 20px;
+    padding-top: 10px;
     font-size: 14px;
     
 }
@@ -45,14 +45,26 @@ th {
     padding: 10px;
 }
 
+td {
+    text-align: center;
+    font-size: 12px;
+    
+}
 
+td:nth-child(2), td:nth-child(3), th:nth-child(2) {
+   padding-left: 10%; 
+}
+
+th:nth-child(3) {
+    padding-left: 15%;
+}
 a#sign_in {
     content: url("../images/GrayedStarBackground.jpg");
     background: url("../images/PressedGrayedStarBackground.jpg");
     width: 800px;
     margin-left: 16%;
     margin-top: 20px;
-    margin-bottom: 120px;
+/*    margin-bottom: 120px;*/
 }
 
 
@@ -119,6 +131,7 @@ a#sign_in:active {
 body {
     position: relative;
     width: 1280px;
+    height: 1050px;
     background-image: url("../images/BlueprintBackground.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -137,4 +150,11 @@ body {
 #email {
     display: none;
 }
+
+.img-circle {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
 

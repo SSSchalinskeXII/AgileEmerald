@@ -2,7 +2,8 @@
   <tr>
   
    
-    <td><%= score.email %></td>
+    <td><%= image_tag current_user.image, class:"img-circle", width: 20 %> </td>
+    <td><%= score.email.split('@')[0] %></td>
     <td><%= score.score  %></td>
     
 
