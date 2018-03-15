@@ -134,5 +134,7 @@ body {
     height:auto;
     color: #fff;
 }
-
+#email {
+    display: none;
+}
 
